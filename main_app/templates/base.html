@@ -16,10 +16,14 @@
 <body>
     <header class="p-3 text-bg-dark">
         <div class="container">
+            
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a class="navbar-brand" aria-current="page" href="/">
+                    <img src="https://camo.githubusercontent.com/f44ef8509622c715a84b66be1729006861afefa389584a6ea0f6d5ac9ff9b308/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f333834303430302f313930383536362f30343332636464382d376366382d313165332d396339632d3539366438343864663663652e706e67" alt="Logo"width="35" height="35" class="d-inline-block align-text-top">
+                </a>
                 <!-- CAN USE FOR A LOGO?<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"></a> -->
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+                    
                     <li><a href="{% url 'index' %}" class="nav-link px-2 text-secondary">Dashboard</a></li>
                     <li><a href="{% url 'appointments_index' %}" class="nav-link px-2 text-secondary">Appointments</a></li>
                 </ul>
