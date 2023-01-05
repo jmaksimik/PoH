@@ -23,9 +23,14 @@
                 </a>
                 <!-- CAN USE FOR A LOGO?<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"></a> -->
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    
+                {% if user.is_authenticated  %}
                     <li><a href="{% url 'index' %}" class="nav-link px-2 text-secondary">Dashboard</a></li>
                     <li><a href="{% url 'appointments_index' %}" class="nav-link px-2 text-secondary">Appointments</a></li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
                 </ul>
             </div>
         </div>

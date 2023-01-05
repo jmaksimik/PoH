@@ -30,7 +30,8 @@ class Patient(models.Model):
     doctors = models.ManyToManyField(Doctor)
 
 
-class Appointments(models.Model): 
+class Appointment(models.Model): 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(verbose_name='Appointment Date')
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
