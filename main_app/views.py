@@ -7,3 +7,6 @@ def home(request):
 
 def dash_index(request):
     return render(request, 'dashboard/index.html')
+
+def appointments_index(request):
+    return render(request, 'appointments/index.html')
