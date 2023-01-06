@@ -1,0 +1,14 @@
+/* line 3, main_app/static/main_app/_dashboard.scss */
+.dashboard {
+  background-color: aqua; }
+
+/* line 3, main_app/static/main_app/_home.scss */
+.home {
+  background-color: magenta; }
+
+/* line 5, main_app/static/main_app/style.scss */
+.navbar-brand {
+  transition: all 2.5s ease-in-out; }
+  /* line 7, main_app/static/main_app/style.scss */
+  .navbar-brand:hover {
+    background-color: aqua; }
