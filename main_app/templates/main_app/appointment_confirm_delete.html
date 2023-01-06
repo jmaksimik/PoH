@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h1>Cancel Appointment</h1>
+
+<h4>Are you sure you want to cancel your appointment, <span class="text-primary"> {{ object.name }}</span> ?</h4>
+
+<form action="" method="post">
+{% csrf_token %}
+    <input type="submit" value="Yes! - Delete!" class="btn btn-warning">
+    <a type="button" class="btn btn-secondary" href="{% url 'detail' appointment.id%}">Cancel</a>
+
+</form>
+{% endblock content %}
+    

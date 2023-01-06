@@ -17,8 +17,11 @@ def dash_index(request):
     return render(request, 'dashboard/index.html')
 
 def appointments_index(request):
-    appts = Appointment.objects.filter(user=request.user)
-    return render(request, 'appointments/index.html', {'appts': appts})
+    appointments = Appointment.objects.filter(user=request.user)
+    return render(request, 'appointments/index.html', 
+        {
+            'appointments': appointments,
+        })
 
 # User functionality
 
@@ -54,3 +57,20 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+
+class AppointmentDetail(DetailView):
+    model = Appointment
+    template_name = 'appointments/detail.html'
+
+class AppointmentCreate(CreateView):
+    model = Appointment
+    fields = '__all__'
+
+class AppointmentUpdate(UpdateView):
+    model = Appointment
+    fields = ['date', 'doctor']
+
+class AppointmentDelete(DeleteView):
+    model = Appointment
+    success_url = '/appointments/'
