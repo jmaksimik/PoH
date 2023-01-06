@@ -13,29 +13,35 @@
         <link type="text/x-scss" href="{% static 'main_app/style.scss' %}" rel="stylesheet" media="screen">
     {% endcompress %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yantramanav:wght@400;700&display=swap" rel="stylesheet">
 
     <title>Pursuit of Healthiness</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg text-bg-dark">
-        <div class="container-fluid">
+    <header class="p-3 justify-content-center border-bottom">
+        <div class="container space-between">
+            
+            <div class="d-flex flex-wrap">
                 <a class="navbar-brand" aria-current="page" href="/">
+                    <span>PoH</span>
                     <img src="https://camo.githubusercontent.com/f44ef8509622c715a84b66be1729006861afefa389584a6ea0f6d5ac9ff9b308/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f333834303430302f313930383536362f30343332636464382d376366382d313165332d396339632d3539366438343864663663652e706e67" alt="Logo"width="35" height="35" class="d-inline-block align-text-top">
                 </a>
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 
                 <!-- CAN USE FOR A LOGO?<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"></a> -->
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-end mb-md-0">
                 {% if user.is_authenticated  %}
                     <li><a href="{% url 'index' %}" class="nav-link px-2 text-secondary">Dashboard</a></li>
                     <li><a href="{% url 'appointments_index' %}" class="nav-link px-2 text-secondary">Appointments</a></li>
                     <li><a href="{% url 'profile_update' %}" class="nav-link px-2 text-secondary">Update Profile</a></li>
                     <li><a href="{% url 'appointments_create' %}" class="nav-link px-2 text-secondary">Create Appointments</a></li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li><a href="{% url 'logout' %}" class="nav-link px-2 text-secondary">Log Out</a></li>
                 {% else %}
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    <li><a href="{% url 'signup' %}" class="nav-link px-2 text-secondary">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}" class="nav-link px-2 text-secondary">Log In</a></li>
                 {% endif %}
                 </ul>
             </div>
@@ -45,9 +51,9 @@
         {% block content %}
         {% endblock content %}
     </main>
-    <div class="navbar navbar-dark bg-secondary fixed-bottom" aria-label="navbar">
+    <div class="navbar navbar-dark bg-secondary px-2 fixed-bottom" aria-label="navbar">
         <footer class="nav">
-            <div class="end">Created by best team ever &nbsp;</div>
+            <div class="end">Pursuit of Healthiness &nbsp;</div>
         </footer>
     </div>
 
