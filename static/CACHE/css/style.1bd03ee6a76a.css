@@ -1,0 +1,25 @@
+/* line 3, main_app/static/main_app/_dashboard.scss */
+.dashboard {
+  background-color: blue; }
+
+/* line 3, main_app/static/main_app/_home.scss */
+.home {
+  background-color: magenta; }
+
+/* line 3, main_app/static/main_app/_profile.scss */
+.dash-profile {
+  position: absolute;
+  top: 40vh;
+  left: 35%; }
+
+/* line 7, main_app/static/main_app/_profile.scss */
+.dash-personal {
+  font-weight: 700;
+  color: red; }
+
+/* line 6, main_app/static/main_app/style.scss */
+.navbar-brand {
+  transition: all 1.5s ease-in-out; }
+  /* line 8, main_app/static/main_app/style.scss */
+  .navbar-brand:hover {
+    background-color: blue; }

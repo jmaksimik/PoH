@@ -1,0 +1,16 @@
+$primary-color-dash: blue;
+$secondary-color-dash: blue;
+$primary-color-home: magenta;
+
+
+
+@mixin transition-ease {
+    transition: all 1.5s ease-in-out;
+}
+
+@mixin center($width: null, $height: null) {
+    position: absolute;
+
+    top: 50vh;
+    left: 30vw;
+  }

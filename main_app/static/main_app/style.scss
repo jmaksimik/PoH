@@ -1,2 +1,13 @@
-// $primary-color: 
-// $secondary-color:
+@import 'dashboard';
+@import 'home';
+@import 'config';
+@import 'profile';
+
+.navbar-brand {
+    @include transition-ease;
+    &:hover {
+        background-color: $primary-color-dash;
+    }
+}
+
+

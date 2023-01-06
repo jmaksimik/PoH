@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Update Personal Info</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ user_form.as_p }}
-    {{ patient_form.as_p }}
-    <button type="submit">Save Changes</button>
-</form>
+<h1 class="dash-profile">Update <span class="dash-personal">Personal</span> Info</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ patient_form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+
 {% endblock content %}
     
