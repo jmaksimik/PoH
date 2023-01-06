@@ -11,5 +11,4 @@ urlpatterns = [
 	path('appointments/<int:pk>/update/', views.AppointmentUpdate.as_view(), name='appointments_update'),
 	path('appointments/<int:pk>/delete/', views.AppointmentDelete.as_view(), name='appointments_delete'),
     path('accounts/signup', views.signup, name='signup'),
-
 ]
