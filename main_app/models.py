@@ -32,6 +32,9 @@ class Patient(models.Model):
     )
     doctors = models.ManyToManyField(Doctor, blank=True)
 
+    def __str__(self):
+        return self.user.username
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created: 
@@ -42,10 +45,12 @@ def save_user_profile(sender, instance, **kwargs):
     instance.patient.save()
 
 
-
 class Appointment(models.Model): 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(verbose_name='Appointment Date')
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.user.username} on {self.date}'
 
