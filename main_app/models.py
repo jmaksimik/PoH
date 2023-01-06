@@ -48,7 +48,6 @@ def save_user_profile(sender, instance, **kwargs):
 class Appointment(models.Model): 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(verbose_name='Appointment Date')
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -56,6 +55,7 @@ class Appointment(models.Model):
     
     def get_absolute_url(self):
         return reverse('appointments_detail', kwargs={'pk': self.id})
+
 
 class Prescription(models.Model):
     name = models.CharField(max_length=50, verbose_name='Prescription Name')
