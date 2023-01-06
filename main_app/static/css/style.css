@@ -1,3 +1,27 @@
+
+*{
+    font-family: 'Yantramanav';
+}
+
+.home-container {
+    background-image: url(https://i.imgur.com/eAbQgXO.jpg);
+    background-size: cover;
+    background-position: center;
+    /* background: rgba(0, 0, 0, 0.7); */
+    height: 70vh;
+    border-radius: 0px!important;
+    color: white;
+    z-index: 1;
+}
+
+.home-content h1, h3 {
+    text-align: center;
+    margin: 30px 0;
+    line-height: 1.5;
+}
+
+
 .navbar-brand:hover {
         background-color: red;
     }
+
