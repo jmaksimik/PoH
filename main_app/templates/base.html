@@ -36,6 +36,7 @@
                 {% if user.is_authenticated  %}
                     <li><a href="{% url 'index' %}" class="nav-link px-2 text-secondary">Dashboard</a></li>
                     <li><a href="{% url 'appointments_index' %}" class="nav-link px-2 text-secondary">Appointments</a></li>
+                    <li><a href="{% url 'prescriptions_index' %}" class="nav-link px-2 text-secondary">Prescriptions</a></li>
                     <li><a href="{% url 'profile_update' %}" class="nav-link px-2 text-secondary">Update Profile</a></li>
 
                     <li><a href="{% url 'logout' %}" class="nav-link px-2 text-secondary">Log Out</a></li>

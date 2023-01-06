@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Patient, Doctor, Appointment
 from django.contrib.auth.models import User
 from .forms import UserForm, PatientForm
+import requests
 
 
 # Create your views here.
@@ -23,6 +24,18 @@ def appointments_index(request):
             'appointments': appointments,
         })
 
+terms = 'asth'
+def prescriptions_index(request):
+    url = f'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?terms={terms}&ef=DISPLAY_NAME,STRENGTHS_AND_FORMS'
+    response = requests.get(url)
+    data = response.json()
+
+    context = {
+        'prescriptionName' : data[2]['DISPLAY_NAME'][0],
+        'prescriptionStrength': data[2]['STRENGTHS_AND_FORMS'][0][0]
+    }
+
+    return render(request, 'prescriptions/index.html', context)
 # User functionality
 
 def update_profile(request):
