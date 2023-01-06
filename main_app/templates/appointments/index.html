@@ -1,5 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Appointments Test</h1>
+<h1>{{ patient.name }}'s appointments</h1>
+
+
+
+{% for appointment in appointments  %}
+<div class="card mb-3">
+  <a href="/appointments/{{ appointment.id }}">
+    <div class="row g-0">
+      <div class="col-4">
+        <div class="card-body">
+          
+          <p class="card-text">Date: {{ appointment.date }}</p>
+          <p class="card-text">Doctor: {{ appointment.doctor }}</p>
+        </div>
+      </div>
+    </div>
+
+  </a>
+
+  </div>
+
+{% endfor %}
+
+<br><br>
 {% endblock content %}
