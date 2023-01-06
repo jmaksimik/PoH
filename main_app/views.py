@@ -65,7 +65,7 @@ class AppointmentDetail(DetailView):
 
 class AppointmentCreate(CreateView):
     model = Appointment
-    fields = '__all__'
+    fields = ['date', 'doctor']
 
 class AppointmentUpdate(UpdateView):
     model = Appointment
