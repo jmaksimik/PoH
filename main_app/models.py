@@ -57,3 +57,14 @@ class Appointment(models.Model):
     def get_absolute_url(self):
         return reverse('appointments_detail', kwargs={'pk': self.id})
 
+class Prescription(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Prescription Name')
+    size = models.IntegerField(verbose_name='Dosage(mg)')
+    doctor = models.ForeignKey(
+        Doctor, 
+        on_delete=models.CASCADE,
+        verbose_name='Prescribing Doctor')
+    prescribed = models.BooleanField(default=True, verbose_name='Currently Prescribed')
+
+    def __str__(self):
+        return self.name
