@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm 
 from .models import Patient, Doctor, Appointment, Prescription
 from django.contrib.auth.models import User
-from .forms import UserForm, PatientForm
+from .forms import UserForm, PatientForm, PrescriptionForm
 import requests
 
 
@@ -27,7 +27,17 @@ def appointments_index(request):
 
 
 def prescriptions_index(request):
-    return render(request, 'prescriptions/index.html')
+    prescriptions = Prescription.objects.all
+    
+    
+    prescription_form = PrescriptionForm()
+
+    return render(request, 'prescriptions/index.html',
+        {
+            'prescriptions': prescriptions,
+            'prescription_form': prescription_form,
+            
+        })
 
 
 # User functionality
@@ -93,6 +103,7 @@ class PrescriptionCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
     def prescriptions_form(request):
         url = f'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?terms={terms}&ef=DISPLAY_NAME,STRENGTHS_AND_FORMS'
         response = requests.get(url)
@@ -104,3 +115,12 @@ class PrescriptionCreate(CreateView):
         }
 
         return render(request, 'prescriptions_form.html', context)
+
+def add_prescription(request, user_id):
+    
+    form = PrescriptionForm(request.POST)
+    if form.is_valid():
+        new_prescription = form.save(commit=False)
+        new_prescription.user_id = user_id
+        new_prescription.save()
+    return redirect('/', user_id=user_id)
