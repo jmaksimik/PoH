@@ -32,16 +32,33 @@
   <div class="col">
     <div class="card">
       <div class="card-header">
-        <span class="card-title"><h3>{{ prescription.get_name_display }}</h3></span>
-        <h6 class="card-subtitle mb-2 text-muted"> {{ prescription.user }}</h6>
+        <span class="card-title"><h3>{{ prescription.name }}</h3></span>
+        <h6 class="card-subtitle text-center text-muted">Prescribed to: {{user.first_name}} {{user.last_name}} - {{ prescription.user }}</h6>
       </div>
-      <div class="card-body">
-        <p class="card-text">Medication: {{ prescription.name }}</p>
-        <p class="card-text">Dose: {{ prescription.size }}</p>
-        <p class="card-text">Prescribed by: {{ prescription.doctor }}</p>
+      <div class="row g-0">
+        <div class="col-4">
+          <div class="card-body">
+            <p class="card-text">Medication: {{ prescription.name }}</p>
+            <p class="card-text">Dose: {{ prescription.size }}</p>
+            <p class="card-text">Prescribed by: {{ prescription.doctor }}</p>
+
+          </div>
+
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <p class="card-text">Use Instructions: {{ prescription.instructions }}</p>
+            <p class="card-text">Notes: {{ prescription.notes }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
         <a href="#" class="card-link">Refill</a>
         <a href="#" class="card-link">Remove</a>
       </div>
+
+       
+
     </div>
   </div>
   
