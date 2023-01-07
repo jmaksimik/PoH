@@ -11,5 +11,6 @@ urlpatterns = [
 	path('appointments/<int:pk>/update/', views.AppointmentUpdate.as_view(), name='appointments_update'),
 	path('appointments/<int:pk>/delete/', views.AppointmentDelete.as_view(), name='appointments_delete'),
     path('prescriptions/', views.prescriptions_index, name='prescriptions_index'),
+    path('prescriptions/create/', views.PrescriptionCreate.as_view(), name='prescriptions_create'),
     path('accounts/signup', views.signup, name='signup'),
 ]

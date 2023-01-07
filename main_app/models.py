@@ -54,12 +54,12 @@ class Appointment(models.Model):
         return f'{self.user.username} on {self.date}'
     
     def get_absolute_url(self):
-        return reverse('appointments_detail', kwargs={'pk': self.id})
+        return reverse('appointments_index')
 
 
 class Prescription(models.Model):
     name = models.CharField(max_length=50, verbose_name='Prescription Name')
-    size = models.IntegerField(verbose_name='Dosage(mg)')
+    size = models.CharField(verbose_name='Dosage(mg)', max_length=50)
     doctor = models.ForeignKey(
         Doctor, 
         on_delete=models.CASCADE,

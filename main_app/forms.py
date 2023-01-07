@@ -12,3 +12,4 @@ class PatientForm(ModelForm):
     class Meta: 
         model = Patient 
         fields = ['birthdate', 'sex', 'doctors']
+
