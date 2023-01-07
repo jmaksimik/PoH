@@ -23,64 +23,79 @@
 <link href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.css' rel="stylesheet">
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
 <script src='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.js'></script>
-<div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-2 gy-2 mx-0">
   
-  {% for prescription in prescriptions %}
-
+    {% for prescription in prescriptions %}
   
-  {% if prescription.user == user %}
-  <div class="col">
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title"><h3>{{ prescription.name }}</h3></span>
-        <h6 class="card-subtitle text-center text-muted">Prescribed to: {{user.first_name}} {{user.last_name}} - {{ prescription.user }}</h6>
-      </div>
-      <div class="row g-0">
-        <div class="col-4">
-          <div class="card-body">
-            <p class="card-text">Medication: {{ prescription.name }}</p>
-            <p class="card-text">Dose: {{ prescription.size }}</p>
-            <p class="card-text">Prescribed by: {{ prescription.doctor }}</p>
-
-          </div>
-
-        </div>
-        <div class="col-8">
-          <div class="card-body">
-            <p class="card-text">Use Instructions: {{ prescription.instructions }}</p>
-            <p class="card-text">Notes: {{ prescription.notes }}</p>
+    
+    {% if prescription.user == user %}
+    <div class="col">
+      <div class="card mx-2">
+        <div class="card-header mx-0">
+          <div class="row g-0">
+            <div class="col-4 align-self-center mx-0">
+              <div class="card-title">
+                <h3>{{ prescription.name }}</h3>
+              </div>
+            </div>
+            <div class="col-8 align-self-center">
+              <h6 class="card-subtitle text-right text-muted">Prescribed to: {{user.first_name}} {{user.last_name}} - {{ prescription.user }}</h6>
+              <h6 class="card-subtitle text-right text-muted">Prescribed by: {{ prescription.doctor }}</h6>
+            </div>
           </div>
         </div>
+        <div class="row g-0">
+          <div class="col-4">
+            <div class="card-body">
+              <p class="card-text">Medication: {{ prescription.name }}</p>
+              <p class="card-text">Dose: {{ prescription.size }}</p>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="card-body">
+              <p class="card-text">Use Instructions: {{ prescription.instructions }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="card-body">
+              <p class="card-text">Notes: {{ prescription.notes }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="card-link">Refill</a>
+          <a href="#" class="card-link">Remove</a>
+        </div>
+  
+         
+  
       </div>
-      <div class="card-footer">
-        <a href="#" class="card-link">Refill</a>
-        <a href="#" class="card-link">Remove</a>
-      </div>
-
-       
-
     </div>
+    
+    {% endif %}
+    {% endfor %}
+      
+      
+  
+      
   </div>
   
-  {% endif %}
-  {% endfor %}
+  <hr>ONE
+  <form action="{% url 'add_prescription' user.id %}" method="POST">
+    {% csrf_token %}
+    {{ prescription_form.as_p }}
     
     
-
-    
+    <input type="submit" class="btn" value="Add Prescription">
+  </form>
+  
+  <hr>
+  <br> <br>
 </div>
 
-<hr>ONE
-<form action="{% url 'add_prescription' user.id %}" method="POST">
-  {% csrf_token %}
-  {{ prescription_form.as_p }}
-  
-  
-  <input type="submit" class="btn" value="Add Prescription">
-</form>
-
-<hr>
-<br> <br>
 <!-- TWO
 {{ prescription_form }}
 <form action="{% url 'add_prescription' user.id %}" method="POST">

@@ -134,4 +134,4 @@ def add_prescription(request, user_id):
         # new_prescription.size = data[2]['STRENGTHS_AND_FORMS'][0][0]
         new_prescription.user_id = user_id
         new_prescription.save()
-    return redirect('/', user_id=user_id, context=context)
+    return redirect('/prescriptions', user_id=user_id, context=context)
