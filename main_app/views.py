@@ -90,6 +90,9 @@ class PrescriptionCreate(CreateView):
     model = Prescription
     fields = ['name', 'size']
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
     def prescriptions_form(request):
         url = f'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?terms={terms}&ef=DISPLAY_NAME,STRENGTHS_AND_FORMS'
         response = requests.get(url)
