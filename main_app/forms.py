@@ -1,5 +1,5 @@
 from django.forms import ModelForm 
-from .models import Patient
+from .models import Patient, Prescription
 from django.contrib.auth.models import User
 from django import forms
 
@@ -13,3 +13,7 @@ class PatientForm(ModelForm):
         model = Patient 
         fields = ['birthdate', 'sex', 'doctors']
 
+class PrescriptionForm(ModelForm):
+    class Meta:
+        model = Prescription
+        fields = ['name', 'size', 'doctor', 'prescribed']

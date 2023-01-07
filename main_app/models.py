@@ -58,13 +58,18 @@ class Appointment(models.Model):
 
 
 class Prescription(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=50, verbose_name='Prescription Name')
     size = models.CharField(verbose_name='Dosage(mg)', max_length=50)
     doctor = models.ForeignKey(
         Doctor, 
         on_delete=models.CASCADE,
-        verbose_name='Prescribing Doctor')
+        verbose_name='Prescribing Doctor',
+        blank=True, null=True)
     prescribed = models.BooleanField(default=True, verbose_name='Currently Prescribed')
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('prescriptions_index')

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>{{ user.name }}'s medications</h1>
+<h1>{{ user.first_name }} {{ user.last_name }}'s medications</h1>
 <a href="{% url 'prescriptions_create' %}">Add Medication</a>
 
 <div class="card mb-3">
@@ -18,4 +18,91 @@
   </div>
 
 <br><br>
+
+<hr>
+<link href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.css' rel="stylesheet">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script src='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.js'></script>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  
+  {% for prescription in prescriptions %}
+
+  
+  {% if prescription.user == user %}
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title"><h3>{{ prescription.get_name_display }}</h3></span>
+        <h6 class="card-subtitle mb-2 text-muted"> {{ prescription.user }}</h6>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Medication: {{ prescription.name }}</p>
+        <p class="card-text">Dose: {{ prescription.size }}</p>
+        <p class="card-text">Prescribed by: {{ prescription.doctor }}</p>
+        <a href="#" class="card-link">Refill</a>
+        <a href="#" class="card-link">Remove</a>
+      </div>
+    </div>
+  </div>
+  
+  {% endif %}
+  {% endfor %}
+    
+    
+
+    
+</div>
+
+<hr>ONE
+<form action="{% url 'add_prescription' user.id %}" method="POST">
+  {% csrf_token %}
+  {{ prescription_form.as_p }}
+  
+  
+  <input type="submit" class="btn" value="Add Prescription">
+</form>
+
+<hr>
+<br> <br>
+<!-- TWO
+{{ prescription_form }}
+<form action="{% url 'add_prescription' user.id %}" method="POST">
+  {% csrf_token %}
+  <label for="id_name">Find Med</label>
+  <input type="text" id="id_name" placeholder="Medication name" name="name" value="{{ prescriptionName }}">
+  <input type="submit" class="btn" value="Add Prescription">
+
+</form>
+
+<hr>
+<br> <br>
+THREE
+<form action="" method="POST">
+  {% csrf_token %}
+  <div class="fieldWrapper">
+    
+    <label for="{{ id_prescription_form.name }}">Email subject:</label>
+    
+    <input type="text" id="{{ id_prescription_form.name }}" name="{{ prescription_form.name }}" >
+</div>
+
+<input type="submit" class="btn" value="Add Prescription">
+</form>
+
+<hr>
+<br> <br> -->
+
+<script>
+  new Def.Autocompleter.Prefetch('prescriptionStrength', []);
+  new Def.Autocompleter.Search('prescriptionName',
+    'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?ef=STRENGTHS_AND_FORMS');
+  Def.Autocompleter.Event.observeListSelections('prescriptionName', function() {
+    const drugField = $('#prescriptionName')[0];
+    const autocomp = drugField.autocomp;
+    const strengths =
+      autocomp.getSelectedItemData()[0].data['STRENGTHS_AND_FORMS'];
+    if (strengths)
+      $('#prescriptionStrength')[0].autocomp.setListAndField(strengths, '');
+})
+</script>
 {% endblock content %}

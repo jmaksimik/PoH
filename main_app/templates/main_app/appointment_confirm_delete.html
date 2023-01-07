@@ -10,7 +10,7 @@
 <form action="" method="post">
 {% csrf_token %}
     <input type="submit" value="Yes! - Delete!" class="btn btn-warning">
-    <a type="button" class="btn btn-secondary" href="{% url 'detail' appointment.id%}">Cancel</a>
+    <a type="button" class="btn btn-secondary" href="{% url 'appointments_detail' appointment.id%}">Cancel</a>
 
 </form>
 {% endblock content %}
