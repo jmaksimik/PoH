@@ -117,10 +117,20 @@ class PrescriptionCreate(CreateView):
         return render(request, 'prescriptions_form.html', context)
 
 def add_prescription(request, user_id):
-    
+    # url = f'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?terms={terms}&ef=DISPLAY_NAME,STRENGTHS_AND_FORMS'
+    # response = requests.get(url)
+    # data = response.json()
+
+    # context = {
+    #     'prescriptionName' : data[2]['DISPLAY_NAME'][0],
+    #     'prescriptionStrength': data[2]['STRENGTHS_AND_FORMS'][0][0]
+    # }
     form = PrescriptionForm(request.POST)
+    
     if form.is_valid():
         new_prescription = form.save(commit=False)
+        # new_prescription.name = data[2]['DISPLAY_NAME'][0]
+        # new_prescription.size = data[2]['STRENGTHS_AND_FORMS'][0][0]
         new_prescription.user_id = user_id
         new_prescription.save()
-    return redirect('/', user_id=user_id)
+    return redirect('/', user_id=user_id, context=context)
