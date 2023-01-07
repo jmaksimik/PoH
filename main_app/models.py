@@ -67,6 +67,8 @@ class Prescription(models.Model):
         verbose_name='Prescribing Doctor',
         blank=True, null=True)
     prescribed = models.BooleanField(default=True, verbose_name='Currently Prescribed')
+    instructions = models.TextField(max_length=250, verbose_name="Use Instructions", blank=True, null=True)
+    notes = models.TextField(max_length=250, verbose_name="Patient Notes", blank=True, null=True)
 
     def __str__(self):
         return self.name

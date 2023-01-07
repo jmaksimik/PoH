@@ -16,4 +16,4 @@ class PatientForm(ModelForm):
 class PrescriptionForm(ModelForm):
     class Meta:
         model = Prescription
-        fields = ['name', 'size', 'doctor', 'prescribed']
+        fields = ['name', 'size', 'doctor', 'instructions', 'notes', 'prescribed']
