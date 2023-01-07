@@ -24,7 +24,7 @@ def appointments_index(request):
             'appointments': appointments,
         })
 
-terms = 'asth'
+
 
 def prescriptions_index(request):
     return render(request, 'prescriptions/index.html')
@@ -88,7 +88,7 @@ class AppointmentDelete(DeleteView):
 
 class PrescriptionCreate(CreateView):
     model = Prescription
-    fields = ['name', 'size', 'doctor']
+    fields = ['name', 'size']
 
     def prescriptions_form(request):
         url = f'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?terms={terms}&ef=DISPLAY_NAME,STRENGTHS_AND_FORMS'

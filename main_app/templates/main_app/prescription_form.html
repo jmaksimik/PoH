@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>add medications</h1>
 <div class="card mb-3">
  
     <div class="row g-0">
@@ -16,25 +14,37 @@
             <link href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.css' rel="stylesheet">
             <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
             <script src='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.js'></script>
+  {% if object %}
+    <h1>Edit <span class="text-primary">{{object.name}}</span></h1>
+  {% else %}
+    <h1>Add Medication</h1>
+  {% endif %}
+  <form action="" method="post">
 
-            <input type="text" id="rxterms" placeholder="Drug name">
-            <input type="text" id="drug_strengths" placeholder="Strength list">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit!" class="btn">
+  </form>
+            <input type="text" id="prescriptionName" placeholder="Medication name">
+            <input type="text" id="prescriptionStrength" placeholder="Strength list">
         </div>
       </div>
     </div>
 
   </div>
 <script>
-  new Def.Autocompleter.Prefetch('drug_strengths', []);
-  new Def.Autocompleter.Search('rxterms',
+  new Def.Autocompleter.Prefetch('prescriptionStrength', []);
+  new Def.Autocompleter.Search('prescriptionName',
     'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?ef=STRENGTHS_AND_FORMS');
-  Def.Autocompleter.Event.observeListSelections('rxterms', function() {
-    const drugField = $('#rxterms')[0];
+  Def.Autocompleter.Event.observeListSelections('prescriptionName', function() {
+    const drugField = $('#prescriptionName')[0];
     const autocomp = drugField.autocomp;
     const strengths =
       autocomp.getSelectedItemData()[0].data['STRENGTHS_AND_FORMS'];
     if (strengths)
-      $('#drug_strengths')[0].autocomp.setListAndField(strengths, '');
+      $('#prescriptionStrength')[0].autocomp.setListAndField(strengths, '');
 })
 </script>
 {% endblock content %}
