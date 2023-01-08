@@ -21,7 +21,52 @@
 </head>
 
 <body>
-    <header class="p-3 justify-content-center border-bottom">
+    <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
+        <div class="container">
+        <a href="/" class="navbar-brand mb-0 h1">
+          <img src="https://camo.githubusercontent.com/f44ef8509622c715a84b66be1729006861afefa389584a6ea0f6d5ac9ff9b308/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f333834303430302f313930383536362f30343332636464382d376366382d313165332d396339632d3539366438343864663663652e706e67" alt="Logo"width="35" height="35" class="d-inline-block align-text-top">
+          PoH
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a href="/" class="nav-link active">Home</a>
+              </li><li class="nav-item active">
+                <a href="{% url 'index' %}" class="nav-link active">Dashboard</a>
+              </li>
+            {% if user.is_authenticated  %}
+            <li class="nav-item active dropdown">
+              <a href="{% url 'index' %}" class="nav-link active dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a href="{% url 'appointments_index' %}" class="dropdown-item">Appointments</a></li>
+                <li><a href="{% url 'appointments_create' %}" class="dropdown-item">Schedule An Appointment</a></li>
+                <li><a href="{% url 'prescriptions_index' %}" class="dropdown-item">Manage Medications</a></li>
+                <li><a href="#" class="dropdown-item">Documents</a></li>
+              </ul>
+            </li>
+            <li class="nav-item active">
+              <a href="{% url 'profile_update' %}" class="nav-link active">Update Profile</a>
+            </li>
+            <li class="nav-item active">
+              <a href="{% url 'logout' %}" class="nav-link">Log Out</a>
+            </li>
+            {% else %}
+            <li class="nav-item active">
+              <a href="{% url 'signup' %}" class="nav-link">Sign Up</a>
+              <li class="nav-item active">
+                <a href="{% url 'login' %}" class="nav-link">Log In</a>
+              </li>
+            </li>
+            {% endif %}
+          </ul>
+        </div> 
+      </div>
+      </nav> 
+    <!-- <header class="p-3 justify-content-center border-bottom">
+    <nav>
         <div class="container space-between">
             
             <div class="d-flex flex-wrap">
@@ -30,8 +75,6 @@
                     <img src="https://camo.githubusercontent.com/f44ef8509622c715a84b66be1729006861afefa389584a6ea0f6d5ac9ff9b308/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f333834303430302f313930383536362f30343332636464382d376366382d313165332d396339632d3539366438343864663663652e706e67" alt="Logo"width="35" height="35" class="d-inline-block align-text-top">
                 </a>
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                
-                <!-- CAN USE FOR A LOGO?<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"></a> -->
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-end mb-md-0">
                 {% if user.is_authenticated  %}
                     <li><a href="{% url 'index' %}" class="nav-link px-2 text-secondary">Dashboard</a></li>
@@ -48,6 +91,7 @@
             </div>
         </div>
     </nav>
+    </header> -->
     <main class="container">
         {% block content %}
         {% endblock content %}
