@@ -3,25 +3,40 @@
     font-family: 'Yantramanav';
 }
 
-.home-container {
-    background-image: url(https://i.imgur.com/eAbQgXO.jpg);
-    background-size: cover;
-    background-position: center;
-    /* background: rgba(0, 0, 0, 0.7); */
-    height: 70vh;
-    border-radius: 0px!important;
+.home-carousel-item {
+    height: 32rem;
+    background: #000;
     color: white;
-    z-index: 1;
+    position: relative;
+    
 }
 
-.home-content h1, h3 {
+.home-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 50px;
     text-align: center;
-    margin: 30px 0;
-    line-height: 1.5;
+}
+
+.home-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.5;
+}
+
+.home-btn {
+    background: rgb(221, 240, 225);
 }
 
 
 .navbar-brand:hover {
-        background-color: red;
+        background-color: rgb(231, 241, 233);
     }
 

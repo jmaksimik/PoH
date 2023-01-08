@@ -3,13 +3,59 @@
 
 {% block content %}
 
-<div class="home-container">
+<div id="home-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <!-- <ol class="carousel-indicactors">
+        <li data-bs-target="#home-carousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#home-carousel" data-bs-slide-to="1"></li>
+    </ol> -->
+    <div class="home-carousel-inside">
+        <div class="home-carousel-item active" data-bs-interval="8000">
+            <div class="home-overlay" style="background-image: url(https://i.imgur.com/eAbQgXO.jpg);"></div>
+            <div class="home-container">
+                <h1>the Pursuit of Healthiness</h1>
+                <h3>Helping patients achieve Life, Liberty, and the Pursuit of Healthy Living.</h3>
+                <br>
+                <a href="{% url 'signup' %}" class="btn btn-lg home-btn">Get Started</a>
+            </div>
+        </div>
+        <!-- <div class="home-carousel-item" data-bs-interval="8000">
+            <div class="home-overlay" style="background-image: url(https://i.imgur.com/6EfvobT.jpg);"></div>
+            <div class="home-container">
+                <h1>the Pursuit of Healthiness</h1>
+                <h3>Helping patients achieve Life, Liberty, and the Pursuit of Healthy Living.</h3>
+                <br>
+                <a href="{% url 'signup' %}" class="btn btn-lg btn-primary">Get Started</a>
+            </div>
+        </div>
+        <div class="home-carousel-item" data-bs-interval="8000">
+            <div class="home-overlay" style="background-image: url(https://imgur.com/zkTp9ru.jpg);"></div>
+            <div class="home-container">
+                <h1>the Pursuit of Healthiness</h1>
+                <h3>Helping patients achieve Life, Liberty, and the Pursuit of Healthy Living.</h3>
+                <br>
+                <a href="{% url 'signup' %}" class="btn btn-lg btn-primary">Get Started</a>
+            </div>
+        </div> -->
+    </div>
+    <a href="#home-carousel" class="carousel-control-prev" role="button" data-bs-slide="prev">
+        <span class="sr-only"></span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a href="#home-carousel" class="carousel-control-next" role="button" data-bs-slide="next">
+        <span class="sr-only"></span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+
+
+
+<!-- <div class="home-container">
         <div class="home-caption text-center">
             <h1>Pursuit of Healthiness</h1>
             <h3>Helping patients achieve Life, Liberty, and the Pursuit of Healthy Living.</h3>
             <br>
             <button type="button" class="btn btn-outline-dark btn-lg">Get Started</button>
         </div>
-</div>
+</div> -->
 {% endblock content %}
     
