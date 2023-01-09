@@ -10,39 +10,39 @@
               <div class="carousel-item active home-carousel-item">
                 <img class="home-overlay w-100 h-40" src="https://i.imgur.com/eAbQgXO.jpg" alt="First slide">
                 <div class="home-container">
-                    <h1>the Pursuit of Healthiness</h1>
+                    <h1>the Pursuit of Healthyness</h1>
                     <h3>Helping patients achieve Life, Liberty, and the Pursuit of Healthy Living.</h3>
                     <br>
                 {% if user.is_authenticated  %}
-                    <a href="{% url 'index' %}" class="btn btn-lg home-btn">Get Started</a>
+                    <a href="{% url 'index' %}" class="btn btn-lg btn-light home-btn">Get Started</a>
                 {% else %}
-                    <a href="{% url 'signup' %}" class="btn btn-lg home-btn">Get Started</a>
+                    <a href="{% url 'signup' %}" class="btn btn-lg btn-light home-btn">Get Started</a>
                 {% endif %}
                 </div>
               </div>
               <div class="carousel-item home-carousel-item">
                 <img class="home-overlay w-100" src="https://i.imgur.com/6EfvobT.jpg" alt="Second slide">
                 <div class="home-container">
-                    <h1>the Pursuit of Healthiness</h1>
+                    <h1>the Pursuit of Healthyness</h1>
                     <h3>Helping patients achieve Life, Liberty, and the Pursuit of Healthy Living.</h3>
                     <br>
                 {% if user.is_authenticated  %}
-                    <a href="{% url 'index' %}" class="btn btn-lg home-btn">Get Started</a>
+                    <a href="{% url 'index' %}" class="btn btn-lg btn-light home-btn">Get Started</a>
                 {% else %}
-                    <a href="{% url 'signup' %}" class="btn btn-lg home-btn">Get Started</a>
+                    <a href="{% url 'signup' %}" class="btn btn-lg btn-light home-btn">Get Started</a>
                 {% endif %}
                 </div>
               </div>
               <div class="carousel-item home-carousel-item">
                 <img class="home-overlay w-100" src="https://imgur.com/zkTp9ru.jpg" alt="Third slide">
                 <div class="home-container">
-                    <h1>the Pursuit of Healthiness</h1>
+                    <h1>the Pursuit of Healthyness</h1>
                     <h3>Helping patients achieve Life, Liberty, and the Pursuit of Healthy Living.</h3>
                     <br>
                 {% if user.is_authenticated  %}
-                    <a href="{% url 'index' %}" class="btn btn-lg home-btn">Get Started</a>
+                    <a href="{% url 'index' %}" class="btn btn-lg btn-light home-btn">Get Started</a>
                 {% else %}
-                    <a href="{% url 'signup' %}" class="btn btn-lg home-btn">Get Started</a>
+                    <a href="{% url 'signup' %}" class="btn btn-lg btn-light home-btn">Get Started</a>
                 {% endif %}
                 </div>
               </div>
@@ -58,20 +58,63 @@
         </div>    
     </div>
 </div>
+<br><br>
 
-<section id="blurb"  class="justify-content-evenly">
+<hr>
+<section id="blurb"  class="justify-content-evenly p-3 mb-5 bg-white rounded ">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-12 col-12">
                 <img src="https://i.imgur.com/TOX5M2b.jpg" class="m-0 img-fluid" alt="smith">
             </div>
             <div class="col-lg-8 col-md-12 col-12 blurb-content">
-                <h2 class="blurb fw-bold">Our Story</h2>
+                <h2 class="blurb fw-bold">A journey to a healthyer you</h2>
                 <p class="blurb">Don't ever let someone tell you that you can't do something. You got a dream, you gotta protect it. When people can't do something themselves, they're gonna tell you that you can't do it. If you want something, go get it.</p>
                 <h4 class="blurb">Pursue your healthyness.</h4>    
             </div>
         </div>
     </div>
 </section>
+<hr>
+<br><br>
+
+<section id="get-started" class="get-started section-padding">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="get-started-header text-center pb-4">
+                <h2 class="fw-bold">Get Ahead</h2>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-4">
+            <div class="card text-white text-center bg-dark pb-2">
+                <div class="card-body">
+                    <i class="bi bi-calendar2-heart"></i>
+                    <h5>Book An Appointment</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-lg-4">
+            <div class="card text-white text-center bg-dark pb-2">
+                <div class="card-body">
+                    <i class="bi bi-envelope-at"></i>
+                    <h5>Contact A Provider</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-lg-4">
+            <div class="card text-white text-center bg-dark pb-2">
+                <div class="card-body">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <h5>Find A Provider</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br><br><br>
+
 {% endblock content %}
     
