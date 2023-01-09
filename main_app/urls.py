@@ -13,5 +13,6 @@ urlpatterns = [
     path('prescriptions/', views.prescriptions_index, name='prescriptions_index'),
     path('prescriptions/create/', views.PrescriptionCreate.as_view(), name='prescriptions_create'),
     path('prescriptions/<int:user_id>/add_prescription/', views.add_prescription, name='add_prescription'),
+    path('documents/', views.documents_index, name='documents_index'),
     path('accounts/signup', views.signup, name='signup'),
 ]
