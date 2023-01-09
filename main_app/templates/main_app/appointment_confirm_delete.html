@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<h1>Cancel Appointment</h1>
+<!-- <h1>Cancel Appointment</h1>
 
 <h4>Are you sure you would like to cancel your appointment, <span class="text-primary"> {{ object.name }}</span> ?</h4>
 
@@ -12,6 +12,22 @@
     <input type="submit" value="Yes! - Delete!" class="btn btn-warning">
     <a type="button" class="btn btn-secondary" href="{% url 'appointments_detail' appointment.id%}">Cancel</a>
 
-</form>
+</form> -->
+
+<div class="jumbotron p-5 mb-4 mt-5 rounded-3">
+    <div class="container-fluid py-5;">
+      <h1 class="display-4 mb-4 fw-bold">Cancel Your Appointment</h1>
+      <hr class="mb-4">
+      <br>
+      <h3>Are you sure you would like to cancel your appointment on <span class="fw-bold">{{ appointment.date }}</span> with {{ appointment.doctor }}?</h3>
+      <br>
+      <hr class="mb-4">
+      <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete Appointment" class="btn btn-danger btn-lg">
+      <a href="{% url 'appointments_detail' appointment.id %}"><button class="btn btn-lg btn-secondary" type="button">Cancel</button></a>
+    </form>
+    </div>
+  </div>
 {% endblock content %}
     
