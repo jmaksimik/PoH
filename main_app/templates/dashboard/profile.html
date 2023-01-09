@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="dash-profile">Update <span class="dash-personal">Personal</span> Info</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ patient_form.as_p }}
-        <button type="submit">Save Changes</button>
-    </form>
+    <div class="jumbotron bg-light p-5 mb-4 mt-5 rounded-3">
+        <div class="container-fluid py-5;">
+          <h1 class="display-4 mb-4 fw-bold">Update Profile</h1>
+          <hr class="mb-4">
+          <form method="post">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ patient_form.as_p }}
+            <button class="btn btn-secondary" type="submit">Save Changes</button>
+        </form>
+        </div>
+      </div>
 
 {% endblock content %}
     
