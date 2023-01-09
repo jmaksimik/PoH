@@ -2,9 +2,13 @@ from django.forms import ModelForm
 from .models import Patient, Prescription
 from django.contrib.auth.models import User
 from django import forms
-from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError
+
+class LoginForm(forms.Form): 
+    email = forms.EmailField(max_length = 50)
+    password = forms.CharField(max_length = 128, widget = forms.PasswordInput)
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
