@@ -3,9 +3,6 @@
 *{
     font-family: 'Yantramanav';
 }
-body {
-    background-color: rgb(231, 241, 233);
-}
 
 .home-carousel-item {
     height: 32rem;
@@ -117,4 +114,8 @@ h1, h2, h3, h4 {
 
 .jumbotron {
     background-color: rgb(249, 161, 161);
+}
+
+.blurb, #blurb {
+    margin: 35px;
 }
