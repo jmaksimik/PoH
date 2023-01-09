@@ -32,11 +32,6 @@
     opacity: 0.5;
 }
 
-.home-btn {
-    background: rgb(221, 240, 225);
-}
-
-
 .navbar-brand:hover {
         background-color: rgb(231, 241, 233);
     }
@@ -118,4 +113,8 @@ h1, h2, h3, h4 {
 
 .blurb, #blurb {
     margin: 35px;
+}
+
+.get-started .card-body i{
+    font-size: 60px;
 }
