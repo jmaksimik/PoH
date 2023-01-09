@@ -75,3 +75,16 @@ class Prescription(models.Model):
 
     def get_absolute_url(self):
         return reverse('prescriptions_index')
+
+class Document(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    file_type = models.CharField(
+        choices=[('ML', 'Labwork'), ('IM', 'Imaging'), ('GD', 'General Documents')],
+        verbose_name='File Type',
+        max_length=2
+    )
+    notes = models.CharField(max_length=250, verbose_name='Notes', blank=True, null=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
