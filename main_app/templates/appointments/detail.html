@@ -1,29 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-<h1>Appointment Details</h1>
-
-<div class="row g-2">
-  <div class="col-4">
-    <div class="card mx-auto">
-      <div class="card-content">
-        <div class="card-header">
-          <span class="card-title">Appointment with {{ appointment.doctor }} on {{ appointment.date}}</span>
-        </div>
-        <div class="card-body">
-          <p class="card-text text-centered">Patient: {{ appointment.patient }}</p>
-          <p class="card-text text-centered">Date: {{ appointment.date }}</p>
-          <p class="card-text text-centered">Doctor: {{ appointment.doctor }}</p>
-        </div>
-
-      </div>
-      <div class="card-action">
-        <a href="{% url 'appointments_update' appointment.id %}" class="btn btn-secondary" role="button">Edit</a>
-        <a href="{% url 'appointments_delete' appointment.id %}" class="btn btn-danger" role="button">Delete</a>
-      </div>
-    </div>
+<div class="jumbotron p-5 mb-4 mt-5 rounded-3">
+  <div class="container-fluid py-5;">
+    <h1 class="display-4 mb-4 fw-bold">Appointment Details</h1>
+    <hr class="mb-4">
+    <h3>You have an appointment scheduled on {{ appointment.date }} with {{ appointment.doctor }}</h3>
+    <p class="col-md-8 fs-4">Date: {{ appointment.date }}</p>
+    <p class="col-md-8 fs-4">Provider: {{ appointment.doctor }}</p>
+    <p class="col-md-8 fs-4">Patient: {{ appointment.patient }}</p>
+    <hr class="mb-4">
+    <a href="{% url 'appointments_update' appointment.id %}"><button class="btn btn-lg btn-light" type="button">Edit Appointment</button></a>
+    <a href="{% url 'appointments_delete' appointment.id %}"><button class="btn btn-lg btn-dark" type="button">Delete Appointment</button></a>
   </div>
 </div>
+
 {% endblock %}
 
