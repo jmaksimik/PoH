@@ -8,6 +8,13 @@ class UserForm(ModelForm):
         model = User
         fields = ['first_name', 'last_name', 'email']
 
+    # def __init__(self, *args, **kwargs):
+    #     super(UserForm, self).__init__(*args, **kwargs)
+
+    #     self.fields['username'].widget.attrs['class'] = 'form-control'
+    #     self.fields['password1'].widget.attrs['class'] = 'form-control'
+    #     self.fields['password2'].widget.attrs['class'] = 'form-control'
+
 class PatientForm(ModelForm):
     class Meta: 
         model = Patient 
