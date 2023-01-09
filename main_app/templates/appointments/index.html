@@ -1,31 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ patient.name }}'s appointments</h1>
-
-<a href="{% url 'appointments_create' %}" class="nav-link px-2 text-secondary">Add New Appointment</a>
-
-
-
+<div class="appointments-container mx-auto shadow">
+  <br>
+  <h1 class="text-center fw-bold">{{ patient.name }}'s Appointments</h1>
+  <hr>
+  <br>
 
 {% for appointment in appointments  %}
-<div class="card mb-3">
-  <a href="/appointments/{{ appointment.id }}">
-    <div class="row g-0">
-      <div class="col-4">
-        <div class="card-body">
-          
-          <p class="card-text">Date: {{ appointment.date }}</p>
-          <p class="card-text">Doctor: {{ appointment.doctor }}</p>
+<div class="upcoming-appointments-container">
+  <div class="row g-5 justify-content-around">
+    <div class="col-sm-6">
+      <div class="card appointments-card">
+        <div class="row g-0">
+          <div class="col-6 col-sm-3">
+              <h1 class="my-4 mx-4 text-center bi bi-calendar-fill"></h1>
+          </div>
+          <div class="col-6 col-sm-9">
+            <div class="card-body d-flex flex-column">
+              <div class="h-100">
+                <h3 class="card-title">Upcoming Appointment</h3>
+                <h2 class="card-title">Scheduled For <span class="fw-bold">{{ appointment.date }}</span></h3>
+                <h4 class="card-title">With {{ appointment.doctor }}</h4>
+                <a href="/appointments/{{ appointment.id }}" class="card-link text-muted"> Appointment Details</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-  </a>
-
   </div>
-
+</div>
 {% endfor %}
-
-<br><br>
+  <br>
+  <a href="{% url 'appointments_create' %}"><button class="btn btn-lg btn-warning my-4">Schedule A New Appointment</button></a>
+  <br><br>
+</div>
 {% endblock content %}

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 
 *{
     font-family: 'Yantramanav';
@@ -51,17 +52,26 @@ body {
     border-radius: 10px;
 }
 
-.card {
+.dash-card {
     overflow: hidden;
     transition: all 1.0s ease;
+    border-radius: 10px;
+    height: 150px;
+    margin: 10px;
 }
 
-.card:hover {
+.dash-card-body {
+    margin: 5px;
+    padding-bottom: 15px;
+}
+
+.dash-card:hover {
     transform: scale(1.5);
 }
 
-.card-body {
-    text-align:center ;
+.dash-card-body {
+    text-align: center;
+    margin-top: 30px;
 }
 
 .appointment-card {
@@ -83,6 +93,29 @@ body {
     background-color: rgb(175, 140, 212);
 }
 
-main .container{
-    margin: 2px;
+.appointments-container {
+    background-color: rgb(249, 236, 151);
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 8%;
+    border-radius: 10px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.appointments-card h3 {
+    text-transform: uppercase;
+    color: rgb(195, 195, 195);
+    font-size: 1.3rem;
+}
+
+.btn-warning {
+    margin: 25px;
+    justify-content: center;
+}
+
+.jumbotron {
+    background-color: rgb(249, 236, 151);
 }
