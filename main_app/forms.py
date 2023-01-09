@@ -64,12 +64,13 @@ class PatientForm(ModelForm):
 class PrescriptionForm(ModelForm):
     error_css_class = 'error-field'
     required_css_class = 'required-field'
-    name = forms.CharField(widget=forms.TextInput
-        (attrs={
+    name = forms.CharField(widget=forms.TextInput(
+        attrs={
             "class": "form-control ",
             "id": "prescriptionName",
             "placeholder": "Medication Name"
-        }))
+        }
+    ))
     size = forms.CharField(widget=forms.TextInput(
         attrs={
             "class": "form-control ",
