@@ -1,57 +1,63 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="px-3 py-3">Dashboard</h1>
-<div class="row">
-    <div class="col-md-4">
-        <a href="{% url 'appointments_index' %}" class="nav-link">
-        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-            <div class="card-header">Appointments</div>
-            <div class="card-body">
-              <h1 class="card-title">Appointments</h1>
+
+<div class="dashboard-container mx-auto shadow">
+    <br>
+    <h1 class="text-center fw-bold">My Dashboard</h1>
+    <hr>
+    <br>
+    <div class="row mx-5 my-5 px-5 py-5 justify-content-center">
+        <div class="col-md-4">
+            <a href="{% url 'appointments_index' %}" class="nav-link">
+            <div class="card shadow appointment-card text-white mb-4" style="width: 18rem;">
+                <div class="card-body">
+                <h1 class="card-title bi bi-calendar3"></h1>
+                <h3>Appointments</h3>
+                </div>
+            </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'prescriptions_index' %}" class="nav-link">
+            <div class="card shadow medicine-card text-white mb-4" style="width: 18rem;">
+                <div class="card-body">
+                <h1 class="card-title bi bi-prescription"></h1>
+                <h3>Manage Medications</h3>
+                </div>
+            </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow insurance-card text-white mb-4" style="width: 18rem;">
+                <div class="card-body">
+                <h1 class="card-title bi bi-person-vcard-fill"></h1>
+                <h3>View Insurance</h3>
+                </div>
             </div>
         </div>
-        </a>
-    </div>
-    <div class="col-md-4">
-        <a href="{% url 'prescriptions_index' %}" class="nav-link">
-        <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-            <div class="card-header">Medications</div>
-            <div class="card-body">
-              <h1 class="card-title">Medications</h1>
+        <div class="col-md-4">
+            <div class="card shadow contact-card text-white mb-4" style="width: 18rem;">
+                <div class="card-body">
+                <h1 class="card-title bi bi-send-fill"></h1>
+                <h3>Contact Your Provider</h3>
+                </div>
             </div>
         </div>
-        </a>
-    </div>
-    <div class="col-md-4">
-        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-            <div class="card-header">Insurance</div>
-            <div class="card-body">
-              <h1 class="card-title">View Insurance</h1>
+        <div class="col-md-4">
+            <div class="card shadow  document-card text-white mb-4" style="width: 18rem;">
+                <div class="card-body">
+                <h1 class="card-titlebi bi-file-earmark-text-fill"></h1>
+                <h3>Manage Documents</h3>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-            <div class="card-header">Contact Provider</div>
-            <div class="card-body">
-              <h1 class="card-title">Contact</h1>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-            <div class="card-header">Manage Documents</div>
-            <div class="card-body">
-              <h1 class="card-title">Documents</h1>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-            <div class="card-header">Find Provider</div>
-            <div class="card-body">
-              <h1 class="card-title">Find A Provider</h1>
+        <div class="col-md-4">
+            <div class="card shadow find-card text-white mb-4" style="width: 18rem;">
+                <div class="card-body">
+                <h1 class="card-title bi bi-geo-alt"></h1>
+                <h3>Find A Provider</h3>
+                </div>
             </div>
         </div>
     </div>

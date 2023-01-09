@@ -2,6 +2,9 @@
 *{
     font-family: 'Yantramanav';
 }
+body {
+    background-color: rgb(231, 241, 233);
+}
 
 .home-carousel-item {
     height: 32rem;
@@ -40,3 +43,46 @@
         background-color: rgb(231, 241, 233);
     }
 
+.dashboard-container {
+    background-color: whitesmoke;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 8%;
+    border-radius: 10px;
+}
+
+.card {
+    overflow: hidden;
+    transition: all 1.0s ease;
+}
+
+.card:hover {
+    transform: scale(1.5);
+}
+
+.card-body {
+    text-align:center ;
+}
+
+.appointment-card {
+    background-color: rgb(249, 161, 161);
+}
+.medicine-card {
+    background-color: rgb(247, 205, 134);
+}
+.insurance-card {
+    background-color: rgb(245, 226, 104);
+}
+.contact-card {
+    background-color: rgb(185, 216, 159);
+}
+.document-card {
+    background-color: rgb(161, 206, 249);
+}
+.find-card {
+    background-color: rgb(175, 140, 212);
+}
+
+main .container{
+    margin: 2px;
+}
