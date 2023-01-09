@@ -22,13 +22,11 @@
   <form action="" method="post">
 
     {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-    </table>
+    <input type="text" id="prescriptionName" placeholder="Medication name">
+    <input type="text" id="prescriptionStrength" placeholder="Strength list">
     <input type="submit" value="Submit!" class="btn">
   </form>
-            <input type="text" id="prescriptionName" placeholder="Medication name">
-            <input type="text" id="prescriptionStrength" placeholder="Strength list">
+            
         </div>
       </div>
     </div>
