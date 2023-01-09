@@ -3,7 +3,8 @@ from .models import Patient, Prescription
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm 
-from django.utils.crypto import get_random_string 
+from django.utils.crypto import get_random_string
+from django.core.exceptions import ValidationError
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -19,7 +20,13 @@ class NewUserForm(UserCreationForm):
     )
     class Meta:
         model = User
-        fields = ['email', 'first_name', 'last_name', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
+
+    def clean(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise ValidationError('Email Exists')
+        return self.cleaned_data
 
     def save(self, commit=True):
         user = super(NewUserForm, self).save(commit=False)
