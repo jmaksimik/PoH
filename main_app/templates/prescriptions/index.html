@@ -2,10 +2,16 @@
 
 {% block content %}
 
+<<<<<<< HEAD
 <h1>{{ user.first_name }} {{ user.last_name }}'s medications</h1>
 <a class="btn btn-dark" href="{% url 'prescriptions_create' %}">Add prescription</a>
 
 
+=======
+<h1>{{ user.first_name }} {{ user.last_name }}'s Medications</h1>
+<a class="btn btn-dark" href="{% url 'prescriptions_create' %}">Add prescription</a>
+
+>>>>>>> d13e1b8 (Re-added/ organized/ revamped create prescription separate form (incase we like better than on-page))
 <hr>
 <link href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.css' rel="stylesheet">
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
