@@ -94,7 +94,7 @@ body {
 }
 
 .appointments-container {
-    background-color: rgb(249, 236, 151);
+    background-color: rgb(249, 161, 161);
     justify-content: center;
     margin-top: 5%;
     margin-bottom: 8%;
@@ -111,11 +111,10 @@ h1, h2, h3, h4 {
     font-size: 1.3rem;
 }
 
-.btn-warning {
+.btn-dark {
     margin: 25px;
-    justify-content: center;
 }
 
 .jumbotron {
-    background-color: rgb(249, 236, 151);
+    background-color: rgb(249, 161, 161);
 }
