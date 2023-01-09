@@ -102,6 +102,7 @@ class PrescriptionCreate(CreateView):
     # fields = ['name', 'size']
     form_class = PrescriptionForm
     template_name = "prescriptions/prescription_form.html"
+    # template_name = "prescriptions/index.html"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -120,15 +121,7 @@ class PrescriptionCreate(CreateView):
         # return render(request, 'prescriptions_form.html', context)
 
 def add_prescription(request, user_id):
-    terms = request
-    url = f'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?terms={terms}&ef=DISPLAY_NAME,STRENGTHS_AND_FORMS'
-    response = requests.get(url)
-    data = response.json()
 
-    context = {
-        # 'prescriptionName' : data[2]['DISPLAY_NAME'][0],
-        # 'prescriptionStrength': data[2]['STRENGTHS_AND_FORMS'][0][0]
-    }
     form = PrescriptionForm(request.POST)
     
     if form.is_valid():
@@ -137,4 +130,4 @@ def add_prescription(request, user_id):
         # new_prescription.size = data[2]['STRENGTHS_AND_FORMS'][0][0]
         new_prescription.user_id = user_id
         new_prescription.save()
-    return redirect('/prescriptions', user_id=user_id, context=context)
+    return redirect('/prescriptions', user_id=user_id)
