@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>{{ user.first_name }} {{ user.last_name }}'s medications</h1>
-
+<a class="btn btn-dark" href="{% url 'prescriptions_create' %}">Add prescription</a>
 
 
 <hr>
