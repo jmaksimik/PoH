@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth import login, authenticate
 from .models import Patient, Doctor, Appointment, Prescription
 from django.contrib.auth.models import User
-from .forms import UserForm, PatientForm, PrescriptionForm, NewUserForm, LoginForm
+from .forms import UserForm, PatientForm, PrescriptionForm, NewUserForm
 import requests
 
 
@@ -61,17 +61,6 @@ def update_profile(request):
         'patient_form': patient_form
     })
 
-def login_page(request):
-    error_message = ''
-    form = LoginForm()
-    if request.method == 'POST': 
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            user = authenticate()
-        else:
-            error_message = 'Incorrect login - try again'
-    context = {'form': form, 'error_message': error_message}
-    return render(request, 'registration/login.html', context)
 
 def signup(request):
     error_message = ''
