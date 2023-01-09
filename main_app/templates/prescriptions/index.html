@@ -57,61 +57,60 @@
         <div class="card-footer">
           <a href="#" class="card-link">Refill</a>
           <a href="#" class="card-link">Remove</a>
-        </div>
-  
-         
-  
+        </div> 
       </div>
     </div>
-    
     {% endif %}
     {% endfor %}
-      
-      
-  
-      
+     
   </div>
   
   <hr>ONE
-  <form action="{% url 'add_prescription' user.id %}" method="POST">
+
+  <!-- <form action="{% url 'add_prescription' user.id %}" method="POST">
     {% csrf_token %}
     {{ prescription_form.as_p }}
     
     
     <input type="submit" class="btn" value="Add Prescription">
-  </form>
+  </form> -->
   
-  <hr>
-  <br> <br>
+
 </div>
+<div class="container-fluid my-2">
+<div class="row justify-content-center">
+  <div class="col-sm col-md-8 align-self-center">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title text-center">
+          
+          {% if object %}
+          <h1>Edit <span class="text-primary">{{object.name}}</span></h1>
+          {% else %}
+          <h1 class="card-text">Add Medication</h1>
+          {% endif %}
+        </div>
+        <div class="card-text">
 
-<!-- TWO
-{{ prescription_form }}
-<form action="{% url 'add_prescription' user.id %}" method="POST">
-  {% csrf_token %}
-  <label for="id_name">Find Med</label>
-  <input type="text" id="id_name" placeholder="Medication name" name="name" value="{{ prescriptionName }}">
-  <input type="submit" class="btn" value="Add Prescription">
+          
+          <form action="{% url 'add_prescription' user.id %}" method="POST">
+            {% csrf_token %}
+            {{ prescription_form.as_p }}
+            
+            
+            <div class="d-grid gap-0 ">
+              <input type="submit" value="Submit!" class="btn btn-success">
+            </div>
+          </form>
 
-</form>
 
-<hr>
-<br> <br>
-THREE
-<form action="" method="POST">
-  {% csrf_token %}
-  <div class="fieldWrapper">
-    
-    <label for="{{ id_prescription_form.name }}">Email subject:</label>
-    
-    <input type="text" id="{{ id_prescription_form.name }}" name="{{ prescription_form.name }}" >
-</div>
+        </div>
+      </div> <!-- End Card Body for form  -->
+    </div> <!-- End Card -->
+  </div> <!-- End Col-->
+</div><!-- End Row-->
 
-<input type="submit" class="btn" value="Add Prescription">
-</form>
-
-<hr>
-<br> <br> -->
+<br><br>
 
 <script>
   new Def.Autocompleter.Prefetch('prescriptionStrength', []);
