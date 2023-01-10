@@ -137,32 +137,23 @@ def add_prescription(request, user_id):
     return redirect('/prescriptions', user_id=user_id)
 
 
-def provider_home(request):
-    return render (request, 'provider/index.html', {'form':SearchProvider(), 'keyword': provider_search})
+# def provider_home(request):
+#     return render (request, 'provider/index.html', {'form':SearchProvider(), 'keyword': provider_search})
 
 def provider_search(request):
-    # url = f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={context.city}%{context.spec}&offset=0&size=10'
     if request.method == "POST":
         form = SearchProvider(request.POST)
     
         if form.is_valid():
             keyword = form.cleaned_data["keyword"]
-            data = requests.get(
-            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={keyword}&offset=0&size=10')
-            provider = data.json()
-            return HttpResponse(provider)
+            response = requests.get(
+            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={keyword}&offset=0&size=10&distinct=1').json()
+
+            return render(request, 'provider/index.html', {'response': response})
         else:   
             return HttpResponse("Form is not properly completed")
     else:
         form = SearchProvider()
-
     return render(request, 'provider/index.html', {'form':form})
 
-    # print(data)
-    # context = {
-    #     'city' : data[0]['Rndrng_Prvdr_City'],
-    #     'state' : data[0]['Rndrng_Prvdr_State_Abrvtn'],
-    #     'last' : data[0]['Rndrng_Prvdr_Last_Org_Name'],
-    #     'zip' : data[0]['Rndrng_Prvdr_Zip5'],
-    #     'spec' : data[0]['Rndrng_Prvdr_Type']
-    # }
+    
