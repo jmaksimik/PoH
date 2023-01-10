@@ -78,7 +78,7 @@ class Prescription(models.Model):
 
 class Document(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    file_type = models.CharField(
+    file_category = models.CharField(
         choices=[('ML', 'Labwork'), ('IM', 'Imaging'), ('GD', 'General Documents')],
         verbose_name='File Type',
         max_length=2
@@ -86,6 +86,7 @@ class Document(models.Model):
     title = models.CharField(max_length=50, verbose_name = 'Document Title', blank=True, null=True)
     notes = models.CharField(max_length=250, verbose_name='Notes', blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    url = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.name
+        return f'{self.title} @ {self.url}'
