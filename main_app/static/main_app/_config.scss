@@ -1,11 +1,11 @@
 $primary-color-dash: blue;
 $secondary-color-dash: blue;
 $primary-color-home: magenta;
-$username-bg-color: red;
+$username-bg-color: rgb(231, 241, 233);
 
 
 @mixin transition-ease {
-    transition: all 1.5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 @mixin center($width: null, $height: null) {
