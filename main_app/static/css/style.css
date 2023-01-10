@@ -86,7 +86,7 @@
 }
 
 .appointments-container {
-    background-color: rgb(249, 161, 161);
+    background-color: rgb(252, 231, 231);
     justify-content: center;
     margin-top: 5%;
     margin-bottom: 8%;
@@ -108,7 +108,7 @@ h1, h2, h3, h4 {
 }
 
 .jumbotron {
-    background-color: rgb(249, 161, 161);
+    background-color: rgb(252, 231, 231);
 }
 
 .blurb, #blurb {
@@ -119,7 +119,64 @@ h1, h2, h3, h4 {
     font-size: 60px;
 }
 
+
+.testimonial .container{
+    margin: 15px;
+}
+
+#testimonial h1{
+    text-align: center;
+    position: relative;
+    margin: 20px 0 35px;
+}
+
+.col-center{
+    margin: 0 auto;
+    float: none!important;
+}
+
+#testCarousel {
+    margin: 50px auto;
+    padding: 0 70px;
+}
+
+.test-carousel-item {
+    color: rgb(141, 139, 139);
+    font-size: 18px;
+    text-align: center;
+    overflow: hidden;
+    min-height: 260px;
+}
+
+.carousel .img-circle img{
+    width: 15%;
+    height: 15%;
+    border-radius: 50%!important;
+}
+
+.carousel .testimonial {
+    padding: 30px 0 10px;
+}
+
+.carousel .overview b {
+    text-transform: uppercase;
+    color: #000;
+}
+
+.carousel .carousel-control {
+    background: none;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    top: 45%;
+}
+
+.test {
+    background: rgb(245, 254, 245);
+}
+
 /* .userLogo {
     background-color: red;
     border-radius: 50%;
 } */
+
