@@ -15,4 +15,5 @@ urlpatterns = [
     path('prescriptions/<int:user_id>/add_prescription/', views.add_prescription, name='add_prescription'),
     path('documents/', views.documents_index, name='documents_index'),
     path('accounts/signup', views.signup, name='signup'),
+    path('provider/', views.provider_index, name='provider_index'),
 ]
