@@ -1,5 +1,5 @@
 from django.forms import ModelForm 
-from .models import Patient, Prescription, Document
+from .models import Patient, Prescription, Document, Insurance
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -106,3 +106,15 @@ class PrescriptionForm(ModelForm):
     #         )
     #     self.fields['name'].label = "NAME HERE"
         # self.fields['name'].widget.attrs.update({'class': "form-control-2"})
+
+class InsuranceForm(ModelForm):
+    class Meta:
+        model = Insurance
+        fields = ['insurance_company', 'subscriber', 'member', 'group']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['insurance_company'].widget.attrs.update({'class': 'form-control'})
+        self.fields['subscriber'].widget.attrs.update({'class': 'form-control'})
+        self.fields['member'].widget.attrs.update({'class': 'form-control'})
+        self.fields['group'].widget.attrs.update({'class': 'form-control'})
