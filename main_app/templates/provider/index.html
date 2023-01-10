@@ -8,7 +8,8 @@
       {{ form }}
       <div class="d-grid gap-0 ">
         <input type="submit" value="Submit!" class="btn btn-success">
-
+        </div>
+      </form>
     <div class="container">
         
         <h1>List of Providers</h1>
@@ -16,22 +17,24 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Provider Name</th>
+                    <th>Specialty</th>
                     <th>City</th>
                     <th>State</th>
-                    <th>Last Name</th>
+                    <th>Street</th>
                     <th>Zip</th>
-                    <th>Specialty</th>
                     
                 </tr>
             </thead>
             <tbody>
                 {% for provider in response %}
                 <tr>
+                    <td>{{ provider.Rndrng_Prvdr_Last_Org_Name }}</td>
+                    <td>{{ provider.Rndrng_Prvdr_Type }}</td>
                     <td>{{ provider.Rndrng_Prvdr_City }}</td>
                     <td>{{ provider.Rndrng_Prvdr_State_Abrvtn }}</td>
-                    <td>{{ provider.Rndrng_Prvdr_Last_Org_Name }}</td>
+                    <td>{{ provider.Rndrng_Prvdr_St1 }}</td>
                     <td>{{ provider.Rndrng_Prvdr_Zip5 }}</td>
-                    <td>{{ provider.Rndrng_Prvdr_Type }}</td>
                 </tr>
                 {% endfor %}   
             </tbody>
