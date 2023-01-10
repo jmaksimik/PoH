@@ -134,3 +134,19 @@ def add_prescription(request, user_id):
         new_prescription.save()
     return redirect('/prescriptions', user_id=user_id)
 
+
+def provider_index(request):
+    url = 'https://data.cms.gov/data-api/v1/dataset/92396110-2aed-4d63-a6a2-5d6207d46a29/data'
+    response = requests.get(url)
+    data = response.json()
+
+    print(data)
+    context = {
+        'city' : data[0]['Rndrng_Prvdr_City'],
+        'state' : data[0]['Rndrng_Prvdr_State_Abrvtn'],
+        'last' : data[0]['Rndrng_Prvdr_Last_Org_Name'],
+        'zip' : data[0]['Rndrng_Prvdr_Zip5'],
+        'type' : data[0]['Rndrng_Prvdr_Type']
+    }
+
+    return render(request, 'provider/index.html', {'context':context})
