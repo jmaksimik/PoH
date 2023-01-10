@@ -119,6 +119,7 @@ h1, h2, h3, h4 {
     font-size: 60px;
 }
 
+
 .testimonial .container{
     margin: 15px;
 }
@@ -173,3 +174,9 @@ h1, h2, h3, h4 {
 .test {
     background: rgb(245, 254, 245);
 }
+
+/* .userLogo {
+    background-color: red;
+    border-radius: 50%;
+} */
+
