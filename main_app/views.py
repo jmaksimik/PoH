@@ -110,17 +110,18 @@ class PrescriptionCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-    # def prescriptions_form(request):
-    #     url = f'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?terms={terms}&ef=DISPLAY_NAME,STRENGTHS_AND_FORMS'
-    #     response = requests.get(url)
-    #     data = response.json()
+class PrescriptionUpdate(UpdateView):
+    model = Prescription
+    fields = ['size', 'instructions', 'notes', 'prescribed', 'doctor']
 
-    #     context = {
-    #         'prescriptionName' : data[2]['DISPLAY_NAME'][0],
-    #         'prescriptionStrength': data[2]['STRENGTHS_AND_FORMS'][0][0]
-    #     }
 
-        # return render(request, 'prescriptions_form.html', context)
+# def update_prescription(request, user_id):
+#     form = PrescriptionForm(request.POST)
+
+#     if form.is_valid():
+#         update_prescription = form.save(commit=False)
+#         update_prescription.save()
+#     return redirect('/prescriptions', user_id=user_id)
 
 def add_prescription(request, user_id):
 

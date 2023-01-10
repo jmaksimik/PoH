@@ -61,6 +61,17 @@
         </div>
         <div class="card-footer">
           <a href="#" class="card-link">Refill</a>
+
+          <div class="card-action">
+
+            <div class="form-check form-switch">
+              <a href="{% url 'prescriptions_update' prescription.id %}">Edit</a>
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+            </div>
+
+          </div>
+            
           <a href="#" class="card-link">Remove</a>
         </div> 
       </div>
@@ -71,15 +82,6 @@
   </div>
   
   <hr>
-
-  <!-- <form action="{% url 'add_prescription' user.id %}" method="POST">
-    {% csrf_token %}
-    {{ prescription_form.as_p }}
-    
-    
-    <input type="submit" class="btn" value="Add Prescription">
-  </form> -->
-  
 
 </div>
 <div class="container-fluid my-2" id="add-prescription">
