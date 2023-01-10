@@ -2,17 +2,22 @@
 
 {% block content %}
 
-
-<h1>{{ user.first_name }} {{ user.last_name }}'s medications</h1>
-<a class="btn btn-dark" href="{% url 'prescriptions_create' %}">Add prescription</a>
-
-
-
-<hr>
 <link href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.css' rel="stylesheet">
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
 <script src='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.js'></script>
+
+
 <div class="container-fluid">
+  <div class="row align-items-center">
+    <div class="col-8">
+      <h1 class="text-center my-4">{{ user.first_name }} {{ user.last_name }}'s Medications</h1>
+
+    </div>
+    <div class="col-4">
+      <a class="btn btn-success btn-lg" href="#add-prescription">Add New Prescription</a>
+
+    </div>
+  </div>
   <div class="row row-cols-1 row-cols-md-2 gy-2 mx-0">
   
     {% for prescription in prescriptions %}
@@ -65,7 +70,7 @@
      
   </div>
   
-  <hr>ONE
+  <hr>
 
   <!-- <form action="{% url 'add_prescription' user.id %}" method="POST">
     {% csrf_token %}
@@ -77,7 +82,7 @@
   
 
 </div>
-<div class="container-fluid my-2">
+<div class="container-fluid my-2" id="add-prescription">
 <div class="row justify-content-center">
   <div class="col-sm col-md-8 align-self-center">
     <div class="card">
@@ -87,7 +92,7 @@
           {% if object %}
           <h1>Edit <span class="text-primary">{{object.name}}</span></h1>
           {% else %}
-          <h1 class="card-text">Add Medication</h1>
+          <h1 class="card-text">New Prescription Form</h1>
           {% endif %}
         </div>
         <div class="card-text">
