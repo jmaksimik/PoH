@@ -7,12 +7,6 @@ from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError
 
 
-class DocumentForm(forms.ModelForm):
-    class Meta:
-        model = Document
-        fields = ('title', 'file_type', 'notes')
-
-
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(

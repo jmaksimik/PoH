@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>File upload page</h1>
+    <h1>File Index Page</h1>
 
+<form method="POST" enctype="multipart/form_data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Upload</button>
+</form>
+
+<p><a href="{% url 'documents_index' %}">Return to My Documents</a></p>
+    
 {% endblock content %}
     

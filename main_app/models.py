@@ -78,7 +78,7 @@ class Prescription(models.Model):
 
 class Document(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    file_type = models.CharField(
+    file_category = models.CharField(
         choices=[('ML', 'Labwork'), ('IM', 'Imaging'), ('GD', 'General Documents')],
         verbose_name='File Type',
         max_length=2

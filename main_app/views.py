@@ -133,3 +133,4 @@ def add_prescription(request, user_id):
         new_prescription.user_id = user_id
         new_prescription.save()
     return redirect('/prescriptions', user_id=user_id)
+
