@@ -12,6 +12,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 
+
 def home(request):
     return render(request, 'home.html')
 
@@ -106,7 +107,6 @@ class PrescriptionCreate(CreateView):
     # fields = ['name', 'size']
     form_class = PrescriptionForm
     template_name = "prescriptions/prescription_form.html"
-    # template_name = "prescriptions/index.html"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
