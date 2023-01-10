@@ -83,6 +83,7 @@ class Document(models.Model):
         verbose_name='File Type',
         max_length=2
     )
+    title = models.CharField(max_length=50, verbose_name = 'Document Title', blank=True, null=True)
     notes = models.CharField(max_length=250, verbose_name='Notes', blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
