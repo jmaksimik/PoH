@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from django.views.generic import ListView, DetailView 
 from django.contrib.auth import login, authenticate
 from .models import Patient, Doctor, Appointment, Prescription
@@ -9,7 +9,6 @@ import requests
 
 
 # Create your views here.
-
 
 def home(request):
     return render(request, 'home.html')
@@ -24,6 +23,9 @@ def appointments_index(request):
             'appointments': appointments,
         })
 
+
+def documents_index(request):
+    return render(request, 'documents/index.html')
 
 
 def prescriptions_index(request):
