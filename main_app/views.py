@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate
 from .models import Patient, Doctor, Appointment, Prescription, Insurance
 from .models import Patient, Doctor, Appointment, Prescription, Document
 from django.contrib.auth.models import User
-from .forms import UserForm, PatientForm, PrescriptionForm, NewUserForm, SearchProvider
+from .forms import UserForm, PatientForm, PrescriptionForm, NewUserForm, SearchProvider, InsuranceForm
 import requests
 import json
 from django.http import HttpResponse
@@ -51,8 +51,9 @@ def prescriptions_index(request):
 
 def insurance_index(request):
     insurances = Insurance.objects.all
-    return render(request, 'insurance/index.html', {'insurances': insurances})
-    
+    insurance_form = InsuranceForm()
+    return render(request, 'insurance/index.html', {'insurances': insurances, 'insurance_form': insurance_form,})
+
 # User functionality
 
 def update_profile(request):
@@ -164,6 +165,23 @@ def provider_search(request):
         form = SearchProvider()
     return render(request, 'provider/index.html', {'form':form})
 
+    # print(data)
+    # context = {
+    #     'city' : data[0]['Rndrng_Prvdr_City'],
+    #     'state' : data[0]['Rndrng_Prvdr_State_Abrvtn'],
+    #     'last' : data[0]['Rndrng_Prvdr_Last_Org_Name'],
+    #     'zip' : data[0]['Rndrng_Prvdr_Zip5'],
+    #     'spec' : data[0]['Rndrng_Prvdr_Type']
+    # }
+
+def add_insurance(request, user_id):
+    form = InsuranceForm(request.POST)
+    if form.is_valid():
+        new_insurance = form.save(commit=False)
+        new_insurance.user_id = user_id
+        new_insurance.save()
+    return redirect('/insurance', user_id=user_id)
+
 def add_file(request):
     document_file = request.FILES.get('doc-file', None)
     print(document_file, '<-- file contents')
@@ -179,4 +197,3 @@ def add_file(request):
         except: 
             print('An error occured uploading file to S3')
     return redirect('documents_index')
-
