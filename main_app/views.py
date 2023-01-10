@@ -3,11 +3,16 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormVi
 from django.views.generic import ListView, DetailView 
 from django.contrib.auth import login, authenticate
 from .models import Patient, Doctor, Appointment, Prescription, Insurance
+from .models import Patient, Doctor, Appointment, Prescription, Document
 from django.contrib.auth.models import User
 from .forms import UserForm, PatientForm, PrescriptionForm, NewUserForm, SearchProvider, InsuranceForm
 import requests
 import json
 from django.http import HttpResponse
+import uuid 
+import boto3 
+S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
+BUCKET = 'pursuitofhealth'
 
 
 # Create your views here.
@@ -141,25 +146,23 @@ def add_prescription(request, user_id):
     return redirect('/prescriptions', user_id=user_id)
 
 
-def provider_home(request):
-    return render (request, 'provider/index.html', {'form':SearchProvider(), 'keyword': provider_search})
+# def provider_home(request):
+#     return render (request, 'provider/index.html', {'form':SearchProvider(), 'keyword': provider_search})
 
 def provider_search(request):
-    # url = f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={context.city}%{context.spec}&offset=0&size=10'
     if request.method == "POST":
         form = SearchProvider(request.POST)
     
         if form.is_valid():
             keyword = form.cleaned_data["keyword"]
-            data = requests.get(
-            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={keyword}&offset=0&size=10')
-            provider = data.json()
-            return HttpResponse(provider)
+            response = requests.get(
+            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={keyword}&offset=0&size=10&distinct=1').json()
+
+            return render(request, 'provider/index.html', {'response': response})
         else:   
             return HttpResponse("Form is not properly completed")
     else:
         form = SearchProvider()
-
     return render(request, 'provider/index.html', {'form':form})
 
     # print(data)
@@ -178,3 +181,19 @@ def add_insurance(request, user_id):
         new_insurance.user_id = user_id
         new_insurance.save()
     return redirect('/insurance', user_id=user_id)
+
+def add_file(request):
+    document_file = request.FILES.get('doc-file', None)
+    print(document_file, '<-- file contents')
+    user_id = request.user.id
+    if document_file: 
+        s3 = boto3.client('s3')
+        key = 'pursuitofhealth/' + uuid.uuid4().hex[:6] + document_file.name[document_file.name.rfind('.'):]
+        print('File is pending')
+        try: 
+            s3.upload_fileobj(document_file, BUCKET, key)
+            url = f'{S3_BASE_URL}{BUCKET}/{key}'
+            Document.objects.create(url=url, user_id=user_id)
+        except: 
+            print('An error occured uploading file to S3')
+    return redirect('documents_index')
