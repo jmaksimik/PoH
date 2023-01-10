@@ -1,0 +1,11 @@
+/* line 3, main_app/static/main_app/_profile.scss */
+.userLogo {
+  background-color: #e7f1e9;
+  border-radius: 50%; }
+
+/* line 6, main_app/static/main_app/style.scss */
+.navbar-brand {
+  transition: all 1.5s ease-in-out; }
+  /* line 8, main_app/static/main_app/style.scss */
+  .navbar-brand:hover {
+    background-color: blue; }
