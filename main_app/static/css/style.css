@@ -115,13 +115,12 @@ h1, h2, h3, h4 {
     margin: 35px;
 }
 
-.get-started .card-body i{
-    font-size: 60px;
+#get-started .row {
+    margin: 25px;
 }
 
-
-.testimonial .container{
-    margin: 15px;
+.get-started .card-body i{
+    font-size: 60px;
 }
 
 #testimonial h1{
