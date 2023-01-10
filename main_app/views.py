@@ -3,11 +3,16 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormVi
 from django.views.generic import ListView, DetailView 
 from django.contrib.auth import login, authenticate
 from .models import Patient, Doctor, Appointment, Prescription, Insurance
+from .models import Patient, Doctor, Appointment, Prescription, Document
 from django.contrib.auth.models import User
 from .forms import UserForm, PatientForm, PrescriptionForm, NewUserForm, SearchProvider
 import requests
 import json
 from django.http import HttpResponse
+import uuid 
+import boto3 
+S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
+BUCKET = 'pursuitofhealth'
 
 
 # Create your views here.
@@ -159,4 +164,19 @@ def provider_search(request):
         form = SearchProvider()
     return render(request, 'provider/index.html', {'form':form})
 
-    
+def add_file(request):
+    document_file = request.FILES.get('doc-file', None)
+    print(document_file, '<-- file contents')
+    user_id = request.user.id
+    if document_file: 
+        s3 = boto3.client('s3')
+        key = 'pursuitofhealth/' + uuid.uuid4().hex[:6] + document_file.name[document_file.name.rfind('.'):]
+        print('File is pending')
+        try: 
+            s3.upload_fileobj(document_file, BUCKET, key)
+            url = f'{S3_BASE_URL}{BUCKET}/{key}'
+            Document.objects.create(url=url, user_id=user_id)
+        except: 
+            print('An error occured uploading file to S3')
+    return redirect('documents_index')
+

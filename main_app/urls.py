@@ -19,4 +19,6 @@ urlpatterns = [
     path('insurance/', views.insurance_index, name='insurance_index'),
 
     
+    path('provider/', views.provider_index, name='provider_index'),
+    path('documents/add_file/', views.add_file, name='add_file'),
 ]
