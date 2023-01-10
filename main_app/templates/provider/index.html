@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <td>{{ context.city }}</td>
-    <td>{{ context.last }}</td>
-    <td>{{ context.zip }}</td>
-    <td>{{ context.state }}</td>
-    <td>{{ context.type }}</td>
+<div class="card-text">
+    <form action="" method="POST">
+      {% csrf_token %}
+      
+      {{ form }}
+      <div class="d-grid gap-0 ">
+        <input type="submit" value="Submit!" class="btn btn-success">
+
+
+
 {% endblock content %}

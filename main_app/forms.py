@@ -5,7 +5,10 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError
+from django.db.models import Q
 
+class SearchProvider(forms.Form):
+    keyword = forms.CharField(label="keyword", max_length=50)
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
