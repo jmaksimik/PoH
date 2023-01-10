@@ -115,13 +115,14 @@ class PrescriptionUpdate(UpdateView):
     fields = ['size', 'instructions', 'notes', 'prescribed', 'doctor']
 
 
-# def update_prescription(request, user_id):
-#     form = PrescriptionForm(request.POST)
+def update_prescription(request, user_id):
+    
+    form = PrescriptionForm(request.POST)
 
-#     if form.is_valid():
-#         update_prescription = form.save(commit=False)
-#         update_prescription.save()
-#     return redirect('/prescriptions', user_id=user_id)
+    if form.is_valid():
+        update_prescription = form.save(commit=False)
+        update_prescription.save()
+    return redirect('/prescriptions', user_id=user_id)
 
 def add_prescription(request, user_id):
 

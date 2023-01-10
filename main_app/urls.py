@@ -14,7 +14,7 @@ urlpatterns = [
     path('prescriptions/create/', views.PrescriptionCreate.as_view(), name='prescriptions_create'),
     path('prescriptions/<int:user_id>/update/', views.PrescriptionUpdate.as_view(), name='prescriptions_update'),
     path('prescriptions/<int:user_id>/add_prescription/', views.add_prescription, name='add_prescription'),
-    # path('prescriptions/<int:user_id>/update_prescription/', views.update_prescription, name='update_prescription'),
+    path('prescriptions/<int:user_id>/update_prescription/', views.update_prescription, name='update_prescription'),
 
     path('documents/', views.documents_index, name='documents_index'),
     path('accounts/signup', views.signup, name='signup'),
