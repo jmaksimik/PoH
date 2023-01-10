@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Insurance Details</h1>
+
+
+{% for insurance in insurances %}
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ insurance.insurance_company }}</span>
+    <p>Name {{ insurance.subscriber }}</p>
+    <p>Member ID {{ insurance.member }}</p>
+    <p>Group {{ insurance.group}}</p>
+    <p>Edit Insurance</p>
+    <p>Delete Insurance</p>
+  </div>
+</div>
+{% endfor %}
+  
+
+{% endblock content %}

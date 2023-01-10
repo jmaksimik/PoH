@@ -16,4 +16,7 @@ urlpatterns = [
     path('documents/', views.documents_index, name='documents_index'),
     path('accounts/signup', views.signup, name='signup'),
     path('provider/', views.provider_search, name='provider_search'),
+    path('insurance/', views.insurance_index, name='insurance_index'),
+
+    
 ]

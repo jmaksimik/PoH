@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from django.views.generic import ListView, DetailView 
 from django.contrib.auth import login, authenticate
-from .models import Patient, Doctor, Appointment, Prescription
+from .models import Patient, Doctor, Appointment, Prescription, Insurance
 from django.contrib.auth.models import User
 from .forms import UserForm, PatientForm, PrescriptionForm, NewUserForm, SearchProvider
 import requests
@@ -44,7 +44,10 @@ def prescriptions_index(request):
             
         })
 
-
+def insurance_index(request):
+    insurances = Insurance.objects.all
+    return render(request, 'insurance/index.html', {'insurances': insurances})
+    
 # User functionality
 
 def update_profile(request):
