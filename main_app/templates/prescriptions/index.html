@@ -60,19 +60,11 @@
           </div>
         </div>
         <div class="card-footer">
-          <a href="#" class="card-link">Refill</a>
-
           <div class="card-action">
-
             <div class="form-check form-switch">
-              <a href="{% url 'update_prescription' prescription.id %}">Edit</a>
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-              <label class="form-check-label" for="">Default switch checkbox input</label>
+              <a href="{% url 'prescriptions_update' prescription.id %}"><button class="btn btn-lg btn-light" type="button">Update Prescription</button></a>
             </div>
-
           </div>
-            
-          <a href="#" class="card-link">Remove</a>
         </div> 
       </div>
     </div>

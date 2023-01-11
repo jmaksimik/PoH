@@ -124,6 +124,7 @@ class PrescriptionCreate(CreateView):
 class PrescriptionUpdate(UpdateView):
     model = Prescription
     fields = ['size', 'instructions', 'notes', 'prescribed', 'doctor']
+    template_name = "prescriptions/prescription_form.html"
 
 
 def update_prescription(request, user_id):
@@ -166,8 +167,7 @@ def provider_search(request):
             return HttpResponse("Form is not properly completed")
     else:
         form = SearchProvider()
-        context = { 'form': SearchProvider(), 'response': response}
-    return render(request, 'provider/index.html', {'form':form})
+    return render(request, 'provider/index.html',{'form':form})
 
     # Need to return something 
 # def index(request):
