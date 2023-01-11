@@ -2,49 +2,48 @@
 
 {% block content %}
 
-
 <div class="insurance-jumbotron p-3 mb-4 mt-3 rounded-3">
     <div class="container-fluid py-5;">
       <h3 class="display-4 mb-4 fw-bold">My Insurance</h3>
       <hr class="mb-4">
-    <div class="row">
-      {% for insurance in insurances  %}
-    <div class="insurance-container">
-    <div class="row g-5 justify-content-start">
-        <div class="col-sm-4">
-        <div class="card shadow insurances-card">
-            <!-- <div class="row g-0"> -->
-            <!-- <div class="col-6 col-sm-3">
-                <h1 class="my-4 mx-4 text-center bi bi-calendar-fill"></h1>
-            </div> -->
-            <div class="col-6 col-sm-8">
-                <div class="card-body d-flex flex-column">
-                <div class="h-100">
-                    <h2 class="card-title">{{ insurance.get_insurance_company_display}}</h2>
-                    <h4 class="card-title fw-bold">{{ insurance.subscriber }}</h4>
-                    <h5 class="card-title">Member ID {{ insurance.member }}</h5>
-                    <h5 class="card-title">Group {{ insurance.group }}</h5>
-                    <a href="" class="card-link text-muted"> Edit</a>
-                    <a href="" class="card-link text-muted"> Delete</a>
+      <div class="row justify-content-evenly">
+        <div class="col-5">
+            {% for insurance in insurances %}  
+          <div class="card shadow insurances-card mb-3 mx-4">
+            <div class="card-body flex-column mx-3">
+              <div class="h-100">
+                <h3 class="card-title fw-bold mt-2">{{ insurance.get_insurance_company_display }}</h3>
+                <h5 class="card-title">{{ insurance.subscriber }}</h5>
+                <br><br>
+                <h4 class="card-text">Member ID {{ insurance.member }}</h4>
+                <div class="row">
+                  <div class="col-7"><h4 class="card-text">Group {{ insurance.group }}</h4></div>
+                  <div class="col-5"><p>FULLY INSURED</p></div>
                 </div>
+                <a href="{% url 'delete_insurance' insurance.id %}" class="card-link text-muted mb-2"> DELETE</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="col-7 my-2"> 
+            <div class="mx-5">
+            <div class="card insurance-form">
+                <div class="card-header">
+                <h3 class="text-center">Add An Insurance Card</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'add_insurance' user.id %}" method="post">
+                        {% csrf_token %}
+                        {{ insurance_form.as_p }}
+                        <input type="submit" class="btn btn-warning mb-4" value="Add Insurance">
+                    </form>
                 </div>
             </div>
-            <!-- </div> -->
+            </div>
         </div>
-        </div>
+      </div>
     </div>
-    </div>
-    {% endfor %}
-    <div class="col-md-4">
-        <form action="{% url 'add_insurance' user.id %}" method="post">
-            {% csrf_token %}
-            {{ insurance_form.as_p }}
-            <input type="submit" class="btn btn-info mb-4" value="Add Insurance">
-        </form>
-    </div>    
-    </div>
-    </div>
-</div>
-
+  </div>
 
 {% endblock content %}
