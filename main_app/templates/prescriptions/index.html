@@ -26,129 +26,87 @@
 
     <div class="col-6 align-self-top mx-0">
       <div class="text-decoration-underline">
-        <h1 class="text-center display-5">Current</h1>
+        <h1 class="text-center display-6">Current</h1>
       </div>
       <div class="accordion" id="accordionPrescribed">
         {% for prescription in prescriptions %}
         {% if prescription.user == user %}
-          {% if prescription.prescribed %}
-
-          <div class="accordion-item">
+          {% if prescription.prescribed == True %}
+   
+          <div class="accordion-item mx-0 my-0">
             <h2 class="accordion-header" id="heading-{{ prescription.id }}">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collasp-{{ prescription.id }}" aria-expanded="true" aria-controls="collasp-{{ prescription.id }}">
-                {{ prescription.name }}
+                <p class="fs-4 fw-bold my-0"> {{ prescription.name }}</p>
               </button>
             </h2>
             <div id="collasp-{{ prescription.id }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ prescription.id }}" data-bs-parent="#accordionPrescribed">
               <div class="accordion-body">
-                <div class="card mx-2">
+                <div class="card mx-0 my-0">
                   <div class="card-header mx-0">
-                    <div class="row g-0">
-                      <div class="col align-self-center mx-0">
-
-                        <h6 class="card-subtitle text-right text-muted">Prescribed to: {{user.first_name}} {{user.last_name}} - {{ prescription.user }}</h6>
-                        <h6 class="card-subtitle text-right text-muted">Prescribed by: {{ prescription.doctor }}</h6>
-                      </div>
+                    <div class="col align-self-center mx-0">
+                      <h6 class="card-subtitle align-self-center text-muted"><u>Prescribed by:   {{ prescription.doctor }}</u> </h6>
                     </div>
                   </div>
-                  <div class="row g-0">
-                    <div class="col-4">
-                      <div class="card-body">
-                        <p class="card-text">Medication: {{ prescription.name }}</p>
-                        <p class="card-text">Dose: {{ prescription.size }}</p>
-                      </div>
+                    <div class="card-body">
+                      <p class="card-text fs-5 "><u>Dose</u>:  <b>{{ prescription.size }} </b> </p>
+                      <p class="card-text fs-5 "><u>Instructions</u>:  <b>{{ prescription.instructions }}</b></p>
+                      <p class="card-text fs-6 ">Notes: {{ prescription.notes }}</p>
                     </div>
-                    <div class="col-8">
-                      <div class="card-body">
-                        <p class="card-text">Use Instructions: {{ prescription.instructions }}</p>
+                    <a href="{% url 'prescriptions_update' prescription.id %}" class="text-reset text-decoration-none">
+                      <div class="card-footer text-center">
+                        <p class="fs-3 fw-semibold m-0">Update</p>
                       </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <div class="card-body">
-                        <p class="card-text">Notes: {{ prescription.notes }}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="card-action">
-                      <div class="form-check form-switch">
-                        <a href="{% url 'prescriptions_update' prescription.id %}"><button class="btn btn-lg btn-light" type="button">Update Prescription</button></a>
-                      </div>
-                    </div>
-                  </div> 
-                </div>
+                    </a>
+                </div> 
               </div>
             </div>
           </div>
           {% endif %}
         {% endif %}
-        {% endfor %}
+        {% endfor %}    
       </div>
     </div>
     
     <div class="col-6 align-self-top mx-0">
       <div class="text-decoration-underline">
-        <h1 class="text-center display-5">Past</h1>
+        <h1 class="text-center display-6">Past</h1>
       </div>
       <div class="accordion" id="accordionPrescribed">
         {% for prescription in prescriptions %}
         {% if prescription.user == user %}
           {% if prescription.prescribed == False %}
-        
-          <div class="accordion-item">
+   
+          <div class="accordion-item mx-0 my-0">
             <h2 class="accordion-header" id="heading-{{ prescription.id }}">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collasp-{{ prescription.id }}" aria-expanded="true" aria-controls="collasp-{{ prescription.id }}">
-                {{ prescription.name }}
+                <p class="fs-4 fw-bold my-0"> {{ prescription.name }}</p>
               </button>
             </h2>
             <div id="collasp-{{ prescription.id }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ prescription.id }}" data-bs-parent="#accordionPrescribed">
               <div class="accordion-body">
-                <div class="card mx-2">
+                <div class="card mx-0 my-0">
                   <div class="card-header mx-0">
-                    <div class="row g-0">
-                      <div class="col align-self-center mx-0">
-
-                        <h6 class="card-subtitle text-right text-muted">Prescribed to: {{user.first_name}} {{user.last_name}} - {{ prescription.user }}</h6>
-                        <h6 class="card-subtitle text-right text-muted">Prescribed by: {{ prescription.doctor }}</h6>
-                      </div>
+                    <div class="col align-self-center mx-0">
+                      <h6 class="card-subtitle align-self-center text-muted"><u>Prescribed by:   {{ prescription.doctor }}</u> </h6>
                     </div>
                   </div>
-                  <div class="row g-0">
-                    <div class="col-4">
-                      <div class="card-body">
-                        <p class="card-text">Medication: {{ prescription.name }}</p>
-                        <p class="card-text">Dose: {{ prescription.size }}</p>
-                      </div>
+                    <div class="card-body">
+                      <p class="card-text fs-5 "><u>Dose</u>:  <b>{{ prescription.size }} </b> </p>
+                      <p class="card-text fs-5 "><u>Instructions</u>:  <b>{{ prescription.instructions }}</b></p>
+                      <p class="card-text fs-6 ">Notes: {{ prescription.notes }}</p>
                     </div>
-                    <div class="col-8">
-                      <div class="card-body">
-                        <p class="card-text">Use Instructions: {{ prescription.instructions }}</p>
+                    <a href="{% url 'prescriptions_update' prescription.id %}" class="text-reset text-decoration-none">
+                      <div class="card-footer text-center">
+                        <p class="fs-3 fw-semibold m-0">Update</p>
                       </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <div class="card-body">
-                        <p class="card-text">Notes: {{ prescription.notes }}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="card-action">
-                      <div class="form-check form-switch">
-                        <a href="{% url 'prescriptions_update' prescription.id %}"><button class="btn btn-lg btn-light" type="button">Update Prescription</button></a>
-                      </div>
-                    </div>
-                  </div> 
-                </div>
+                    </a>
+                </div> 
               </div>
             </div>
           </div>
           {% endif %}
         {% endif %}
-        {% endfor %}
+        {% endfor %}    
       </div>
     </div>
     
