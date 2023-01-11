@@ -3,11 +3,16 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormVi
 from django.views.generic import ListView, DetailView 
 from django.contrib.auth import login, authenticate
 from .models import Patient, Doctor, Appointment, Prescription, Insurance
+from .models import Patient, Doctor, Appointment, Prescription, Document
 from django.contrib.auth.models import User
-from .forms import UserForm, PatientForm, PrescriptionForm, NewUserForm, SearchProvider
+from .forms import UserForm, PatientForm, PrescriptionForm, NewUserForm, SearchProvider, InsuranceForm
 import requests
 import json
 from django.http import HttpResponse
+import uuid 
+import boto3 
+S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
+BUCKET = 'pursuitofhealth'
 
 
 # Create your views here.
@@ -46,8 +51,9 @@ def prescriptions_index(request):
 
 def insurance_index(request):
     insurances = Insurance.objects.all
-    return render(request, 'insurance/index.html', {'insurances': insurances})
-    
+    insurance_form = InsuranceForm()
+    return render(request, 'insurance/index.html', {'insurances': insurances, 'insurance_form': insurance_form,})
+
 # User functionality
 
 def update_profile(request):
@@ -159,4 +165,35 @@ def provider_search(request):
         form = SearchProvider()
     return render(request, 'provider/index.html', {'form':form})
 
-    
+    # print(data)
+    # context = {
+    #     'city' : data[0]['Rndrng_Prvdr_City'],
+    #     'state' : data[0]['Rndrng_Prvdr_State_Abrvtn'],
+    #     'last' : data[0]['Rndrng_Prvdr_Last_Org_Name'],
+    #     'zip' : data[0]['Rndrng_Prvdr_Zip5'],
+    #     'spec' : data[0]['Rndrng_Prvdr_Type']
+    # }
+
+def add_insurance(request, user_id):
+    form = InsuranceForm(request.POST)
+    if form.is_valid():
+        new_insurance = form.save(commit=False)
+        new_insurance.user_id = user_id
+        new_insurance.save()
+    return redirect('/insurance', user_id=user_id)
+
+def add_file(request):
+    document_file = request.FILES.get('doc-file', None)
+    print(document_file, '<-- file contents')
+    user_id = request.user.id
+    if document_file: 
+        s3 = boto3.client('s3')
+        key = 'pursuitofhealth/' + uuid.uuid4().hex[:6] + document_file.name[document_file.name.rfind('.'):]
+        print('File is pending')
+        try: 
+            s3.upload_fileobj(document_file, BUCKET, key)
+            url = f'{S3_BASE_URL}{BUCKET}/{key}'
+            Document.objects.create(url=url, user_id=user_id)
+        except: 
+            print('An error occured uploading file to S3')
+    return redirect('documents_index')
