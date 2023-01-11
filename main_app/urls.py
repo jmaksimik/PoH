@@ -22,7 +22,5 @@ urlpatterns = [
     path('provider/', views.provider_search, name='provider_search'),
     path('insurance/', views.insurance_index, name='insurance_index'),
     path('insurance/<int:user_id>/add_insurance/', views.add_insurance, name='add_insurance'),
-    # path('provider/', views.provider_index, name='provider_index'),
     path('documents/add_file/', views.add_file, name='add_file'),
-
 ]

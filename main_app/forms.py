@@ -9,7 +9,6 @@ from django.db.models import Q
 
 class SearchProvider(forms.Form):
     keyword = forms.CharField(label="Keyword", max_length=50)
-    # state_abbrev = forms.CharField(label='state_abbrev', max_length=2)
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
