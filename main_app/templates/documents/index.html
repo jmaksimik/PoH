@@ -1,79 +1,110 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>My Medical Record</h1>
+<h1 class="text-center">My Medical Record</h1>
 <br>
-<h3>My Labs</h3>
-<table>
-    <thead>
-        <tr>Date</tr>
-        <tr>Lab</tr>
-        <tr>Notes</tr>
-    </thead>
-    <tbody>
-    {% for file in user.document_set.all  %}
-        {% if file.file_category == 'ML'  %}
-            <td>{{ file.uploaded_at|date:"m/d/Y"}}</td>
-            <td><a href="{{ file.url }}">{{ file.title }}</a></td>
-            <td>{{ file.notes }}</td>
-        {% endif %} 
-    {% endfor %}
-    </tbody>
-</table>
 
-
-<h3>My Imaging</h3>
-<table>
-    <thead>
-        <tr>Date</tr>
-        <tr>Images</tr>
-        <tr>Notes</tr>
-    </thead>
-    <tbody>
-    {% for file in user.document_set.all  %}
-        {% if file.file_category == 'IM'  %}
-            <td>{{ file.uploaded_at|date:"m/d/Y"}}</td>
-            <td><a href="{{ file.url }}">{{ file.title }}</a></td>
-            <td>{{ file.notes }}</td>
-        {% endif %} 
-    {% endfor %}
-    </tbody>
-</table>
-
-<h3>My Documents</h3>
-<table>
-    <thead>
-        <tr>Date</tr>
-        <tr>Title</tr>
-        <tr>Notes</tr>
-    </thead>
-    <tbody>
-    {% for file in user.document_set.all  %}
-        {% if file.file_category == 'GD'  %}
-            <td>{{ file.uploaded_at|date:"m/d/Y"}}</td>
-            <td><a href="{{ file.url }}">{{ file.title }}</a></td>
-            <td>{{ file.notes }}</td>
-        {% endif %} 
-    {% endfor %}
-    </tbody>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <h3>My Labs</h3>
+                <table class="table table-primary table-striped">
+                    <thead>
+                        <th scope="col">Date</th>
+                        <th scope=col>Lab</th>
+                        <th scope="col">Notes</th>
+                    </thead>
+                    <tbody>
+                        {% for file in user.document_set.all %}
+                        {% if file.file_category == 'ML' %}
+                        <tr>
+                            <td>{{ file.uploaded_at|date:"m/d/Y"}}</td>
+                            <td><a href="{{ file.url }}">{{ file.title }}</a></td>
+                            <td>{{ file.notes }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <h3>My Imaging</h3>
+                <table class="table table-success table-striped">
+                    <thead>
+                        <th scope="col">Date</th>
+                        <th scope="col">Images</th>
+                        <th scope="col">Notes</th>
+                    </thead>
+                    <tbody>
+                        {% for file in user.document_set.all %}
+                        {% if file.file_category == 'IM' %}
+                        <tr>
+                            <td>{{ file.uploaded_at|date:"m/d/Y"}}</td>
+                            <td><a href="{{ file.url }}">{{ file.title }}</a></td>
+                            <td>{{ file.notes }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="card">
+                <h3>My Documents</h3>
+                <table class="table table-warning table-striped" t>
+                    <thead>
+                        <th scope="col">Date</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Notes</th>
+                    </thead>
+                    <tbody>
+                        {% for file in user.document_set.all %}
+                        {% if file.file_category == 'GD' %}
+                        <tr>
+                            <td>{{ file.uploaded_at|date:"m/d/Y"}}</td>
+                            <td><a href="{{ file.url }}">{{ file.title }}</a></td>
+                            <td>{{ file.notes }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 <hr>
-<form action="{% url 'add_file' %}" enctype="multipart/form-data" method="POST">
-    {% csrf_token %}
-    <input type="file" name="doc-file">
-    <label for="file-name">Document Name:</label>
-    <input type="text" id="file-name" name="title">
-    <label for="category-select">File Category:</label>
-    <select id="category-select" name="file_category">
-        <option value=""></option>
-        <option value="ML">Lab Work</option>
-        <option value="IM">Imaging</option>
-        <option value="GD">General Documents</option>
-    </select>
-    <label for="note-field">Notes:</label>
-    <textarea id="note-field" name="notes"></textarea>
-    <input type="submit" class="btn" value="Upload File">
-</form>
+<div class="container">
+    <form action="{% url 'add_file' %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <input type="file" class="form-control form-control-sm" name="doc-file">
+        <label for="file-name" class="form-label">Document Name:</label>
+        <input type="text" class="form-control" id="file-name" name="title">
+        <label for="category-select">File Category:</label>
+        <select id="category-select" class="form-control" name="file_category">
+            <option value=""></option>
+            <option value="ML">Lab Work</option>
+            <option value="IM">Imaging</option>
+            <option value="GD">General Documents</option>
+        </select>
+        <label for="note-field" class="form-label">Notes:</label>
+        <textarea id="note-field" class="form-control" name="notes"></textarea>
+        <br>
+        <input type="submit" class="btn btn-success" value="Upload File">
+    </form>
+</div>
+
+                    
+
+<br>
+<br>
+
 
 {% endblock content %}
-    

@@ -113,7 +113,6 @@ class AppointmentDelete(DeleteView):
 
 class PrescriptionCreate(CreateView):
     model = Prescription
-    # fields = ['name', 'size']
     form_class = PrescriptionForm
     template_name = "prescriptions/prescription_form.html"
 
@@ -142,15 +141,9 @@ def add_prescription(request, user_id):
     
     if form.is_valid():
         new_prescription = form.save(commit=False)
-        # new_prescription.name = data[2]['DISPLAY_NAME'][0]
-        # new_prescription.size = data[2]['STRENGTHS_AND_FORMS'][0][0]
         new_prescription.user_id = user_id
         new_prescription.save()
     return redirect('/prescriptions', user_id=user_id)
-
-
-# def provider_home(request):
-#     return render (request, 'provider/index.html', {'form':SearchProvider(), 'keyword': provider_search})
 
 def provider_search(request):
     form = None
@@ -158,9 +151,11 @@ def provider_search(request):
         form = SearchProvider(request.POST)
     
         if form.is_valid():
-            keyword = form.cleaned_data["keyword"]
+            city = form.cleaned_data["city"]
+            spec = form.cleaned_data["spec"]
+            
             response = requests.get(
-            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={keyword}&offset=0&size=300&distinct=1').json()
+            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?column=&keyword={city}%20{spec}&offset=0&size=300').json()
             K = "Rndrng_NPI"
 
             memo = set()
@@ -177,30 +172,6 @@ def provider_search(request):
     else:
         form = SearchProvider()
     return render(request, 'provider/index.html',{'form':form})
-
-    # Need to return something 
-# def index(request):
-#     result = None
-#     form = None
-#     if request.method == 'POST':  
-#         form = browse(request.POST, request.FILES)  
-#         if form.is_valid():  
-#             handle_uploaded_file(request.FILES['file']) # store file in upload folder
-#             path = "pdfextractor/static/upload/"+ str(request.FILES['file'])#path of selected file
-#             result = extract_data(path) # extract data from file
-#     else:
-#         form = browse()
-#         context = {"form": form, "result": result}
-#     return render(request,'pdfextractor/index.html', context)
-
-    # print(data)
-    # context = {
-    #     'city' : data[0]['Rndrng_Prvdr_City'],
-    #     'state' : data[0]['Rndrng_Prvdr_State_Abrvtn'],
-    #     'last' : data[0]['Rndrng_Prvdr_Last_Org_Name'],
-    #     'zip' : data[0]['Rndrng_Prvdr_Zip5'],
-    #     'spec' : data[0]['Rndrng_Prvdr_Type']
-    # }
 
 def add_insurance(request, user_id):
     form = InsuranceForm(request.POST)

@@ -25,4 +25,5 @@ urlpatterns = [
     # path('provider/', views.provider_index, name='provider_index'),
     
 
+    path('documents/add_file/', views.add_file, name='add_file'),
 ]
