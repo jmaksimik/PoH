@@ -19,5 +19,28 @@
 }
 
 .appointments-container {
-    width: 80%;
+    width: 80vw;
+}
+
+.provider-search-container {
+    background-color: $primary-color-provider;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+.provider-results-container {
+    width: 80vw;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 8%;
+    border-radius: 10px;
+}
+
+.provider-container {
+    
+    justify-content: center;
+    margin-top: 7%;
+    border-radius: 10px;
+    width: 80vw;
 }

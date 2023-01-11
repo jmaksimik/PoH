@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 from django.db.models import Q
 
 class SearchProvider(forms.Form):
-    keyword = forms.CharField(label="keyword", max_length=50)
+    keyword = forms.CharField(label="Keyword", max_length=50)
     # state_abbrev = forms.CharField(label='state_abbrev', max_length=2)
 
 class NewUserForm(UserCreationForm):
