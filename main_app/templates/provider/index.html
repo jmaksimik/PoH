@@ -19,6 +19,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>NPI</th>
                     <th>Provider Name</th>
                     <th>Specialty</th>
                     <th>City</th>
@@ -31,6 +32,7 @@
             <tbody>
                 {% for provider in response %}
                 <tr>
+                    <td>{{ provider.Rndrng_NPI }}</td>
                     <td>{{ provider.Rndrng_Prvdr_Last_Org_Name }}</td>
                     <td>{{ provider.Rndrng_Prvdr_Type }}</td>
                     <td>{{ provider.Rndrng_Prvdr_City }}</td>

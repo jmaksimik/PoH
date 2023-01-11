@@ -160,9 +160,18 @@ def provider_search(request):
         if form.is_valid():
             keyword = form.cleaned_data["keyword"]
             response = requests.get(
-            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={keyword}&offset=0&size=10&distinct=1').json()
+            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={keyword}&offset=0&size=300&distinct=1').json()
+            K = "Rndrng_NPI"
 
-            return render(request, 'provider/index.html', {'response': response})
+            memo = set()
+            res = []
+            for sub in response:
+                if sub[K] not in memo:
+                    res.append(sub)
+
+                    memo.add(sub[K])
+            
+            return render(request, 'provider/index.html', {'response': res, 'form':form})
         else:   
             return HttpResponse("Form is not properly completed")
     else:
@@ -203,12 +212,10 @@ def add_insurance(request, user_id):
 
 def add_file(request):
     document_file = request.FILES.get('doc-file', None)
-    print(document_file, '<-- file contents')
     user_id = request.user.id
     if document_file: 
         s3 = boto3.client('s3')
         key = 'pursuitofhealth/' + uuid.uuid4().hex[:6] + document_file.name[document_file.name.rfind('.'):]
-        print('File is pending')
         try: 
             s3.upload_fileobj(document_file, BUCKET, key)
             url = f'{S3_BASE_URL}{BUCKET}/{key}'
