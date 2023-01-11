@@ -37,16 +37,13 @@ def documents_index(request):
 
 
 def prescriptions_index(request):
-    prescriptions = Prescription.objects.all
-    
-    
+    prescriptions = Prescription.objects.all    
     prescription_form = PrescriptionForm()
 
     return render(request, 'prescriptions/index.html',
         {
             'prescriptions': prescriptions,
             'prescription_form': prescription_form,
-            
         })
 
 def insurance_index(request):
@@ -127,7 +124,6 @@ class PrescriptionUpdate(UpdateView):
 
 
 def update_prescription(request, user_id):
-    
     form = PrescriptionForm(request.POST)
 
     if form.is_valid():
@@ -136,7 +132,6 @@ def update_prescription(request, user_id):
     return redirect('/prescriptions', user_id=user_id)
 
 def add_prescription(request, user_id):
-
     form = PrescriptionForm(request.POST)
     
     if form.is_valid():
@@ -181,15 +176,11 @@ def add_insurance(request, user_id):
         new_insurance.save()
     return redirect('/insurance', user_id=user_id)
 
-def delete_insurance(request, id):
+def delete_insurance(request, insurance_id):
     del_insurance = Insurance.objects.get(id=id)
     del_insurance.delete()
-    # form = InsuranceForm(request.POST)
-    # if form.is_valid():
-    #     delete_insurance = form.save(commit=False)
-    #     delete_insurance.user_id = user_id
-    #     delete_insurance.save()
-    return redirect('/insurance')
+
+    return redirect('/insurance', id=id)
 
 
 def add_file(request):
