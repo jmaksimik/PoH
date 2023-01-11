@@ -121,17 +121,20 @@ class PrescriptionCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-    # def prescriptions_form(request):
-    #     url = f'https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?terms={terms}&ef=DISPLAY_NAME,STRENGTHS_AND_FORMS'
-    #     response = requests.get(url)
-    #     data = response.json()
+class PrescriptionUpdate(UpdateView):
+    model = Prescription
+    fields = ['size', 'instructions', 'notes', 'prescribed', 'doctor']
+    template_name = "prescriptions/prescription_form.html"
 
-    #     context = {
-    #         'prescriptionName' : data[2]['DISPLAY_NAME'][0],
-    #         'prescriptionStrength': data[2]['STRENGTHS_AND_FORMS'][0][0]
-    #     }
 
-        # return render(request, 'prescriptions_form.html', context)
+def update_prescription(request, user_id):
+    
+    form = PrescriptionForm(request.POST)
+
+    if form.is_valid():
+        update_prescription = form.save(commit=False)
+        update_prescription.save()
+    return redirect('/prescriptions', user_id=user_id)
 
 def add_prescription(request, user_id):
 
@@ -150,6 +153,7 @@ def add_prescription(request, user_id):
 #     return render (request, 'provider/index.html', {'form':SearchProvider(), 'keyword': provider_search})
 
 def provider_search(request):
+    form = None
     if request.method == "POST":
         form = SearchProvider(request.POST)
     
@@ -172,7 +176,22 @@ def provider_search(request):
             return HttpResponse("Form is not properly completed")
     else:
         form = SearchProvider()
-    return render(request, 'provider/index.html', {'form':form})
+    return render(request, 'provider/index.html',{'form':form})
+
+    # Need to return something 
+# def index(request):
+#     result = None
+#     form = None
+#     if request.method == 'POST':  
+#         form = browse(request.POST, request.FILES)  
+#         if form.is_valid():  
+#             handle_uploaded_file(request.FILES['file']) # store file in upload folder
+#             path = "pdfextractor/static/upload/"+ str(request.FILES['file'])#path of selected file
+#             result = extract_data(path) # extract data from file
+#     else:
+#         form = browse()
+#         context = {"form": form, "result": result}
+#     return render(request,'pdfextractor/index.html', context)
 
     # print(data)
     # context = {

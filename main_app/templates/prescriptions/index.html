@@ -60,8 +60,11 @@
           </div>
         </div>
         <div class="card-footer">
-          <a href="#" class="card-link">Refill</a>
-          <a href="#" class="card-link">Remove</a>
+          <div class="card-action">
+            <div class="form-check form-switch">
+              <a href="{% url 'prescriptions_update' prescription.id %}"><button class="btn btn-lg btn-light" type="button">Update Prescription</button></a>
+            </div>
+          </div>
         </div> 
       </div>
     </div>
@@ -71,15 +74,6 @@
   </div>
   
   <hr>
-
-  <!-- <form action="{% url 'add_prescription' user.id %}" method="POST">
-    {% csrf_token %}
-    {{ prescription_form.as_p }}
-    
-    
-    <input type="submit" class="btn" value="Add Prescription">
-  </form> -->
-  
 
 </div>
 <div class="container-fluid my-2" id="add-prescription">
