@@ -212,12 +212,10 @@ def add_insurance(request, user_id):
 
 def add_file(request):
     document_file = request.FILES.get('doc-file', None)
-    print(document_file, '<-- file contents')
     user_id = request.user.id
     if document_file: 
         s3 = boto3.client('s3')
         key = 'pursuitofhealth/' + uuid.uuid4().hex[:6] + document_file.name[document_file.name.rfind('.'):]
-        print('File is pending')
         try: 
             s3.upload_fileobj(document_file, BUCKET, key)
             url = f'{S3_BASE_URL}{BUCKET}/{key}'
