@@ -1,16 +1,63 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>File Index Page</h1>
+<h1>My Medical Record</h1>
+<br>
+<h3>My Labs</h3>
+<table>
+    <thead>
+        <tr>Date</tr>
+        <tr>Lab</tr>
+        <tr>Notes</tr>
+    </thead>
+    <tbody>
+    {% for file in user.document_set.all  %}
+        {% if file.file_category == 'ML'  %}
+            <td>{{ file.uploaded_at|date:"m/d/Y"}}</td>
+            <td><a href="{{ file.url }}">{{ file.title }}</a></td>
+            <td>{{ file.notes }}</td>
+        {% endif %} 
+    {% endfor %}
+    </tbody>
+</table>
 
 
-{% for file in user.document_set.all  %}
-    <a href="{{ file.url }}"><p>{{ file.title }}</p></a>
+<h3>My Imaging</h3>
+<table>
+    <thead>
+        <tr>Date</tr>
+        <tr>Images</tr>
+        <tr>Notes</tr>
+    </thead>
+    <tbody>
+    {% for file in user.document_set.all  %}
+        {% if file.file_category == 'IM'  %}
+            <td>{{ file.uploaded_at|date:"m/d/Y"}}</td>
+            <td><a href="{{ file.url }}">{{ file.title }}</a></td>
+            <td>{{ file.notes }}</td>
+        {% endif %} 
+    {% endfor %}
+    </tbody>
+</table>
 
-{% empty %}
-    <h3>No Files Uploaded</h3>
-{% endfor %}
-
+<h3>My Documents</h3>
+<table>
+    <thead>
+        <tr>Date</tr>
+        <tr>Title</tr>
+        <tr>Notes</tr>
+    </thead>
+    <tbody>
+    {% for file in user.document_set.all  %}
+        {% if file.file_category == 'GD'  %}
+            <td>{{ file.uploaded_at|date:"m/d/Y"}}</td>
+            <td><a href="{{ file.url }}">{{ file.title }}</a></td>
+            <td>{{ file.notes }}</td>
+        {% endif %} 
+    {% endfor %}
+    </tbody>
+</table>
+<hr>
 <form action="{% url 'add_file' %}" enctype="multipart/form-data" method="POST">
     {% csrf_token %}
     <input type="file" name="doc-file">
@@ -27,6 +74,6 @@
     <textarea id="note-field" name="notes"></textarea>
     <input type="submit" class="btn" value="Upload File">
 </form>
-    
+
 {% endblock content %}
     

@@ -213,13 +213,22 @@ def add_insurance(request, user_id):
 def add_file(request):
     document_file = request.FILES.get('doc-file', None)
     user_id = request.user.id
+    title = request.POST['title']
+    file_category = request.POST['file_category']
+    notes = request.POST['notes']
     if document_file: 
         s3 = boto3.client('s3')
         key = 'pursuitofhealth/' + uuid.uuid4().hex[:6] + document_file.name[document_file.name.rfind('.'):]
         try: 
             s3.upload_fileobj(document_file, BUCKET, key)
             url = f'{S3_BASE_URL}{BUCKET}/{key}'
-            Document.objects.create(url=url, user_id=user_id)
+            Document.objects.create(
+                url=url, 
+                user_id=user_id,
+                title=title,
+                file_category=file_category,
+                notes=notes
+                )
         except: 
             print('An error occured uploading file to S3')
     return redirect('documents_index')
