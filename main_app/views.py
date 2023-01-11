@@ -181,6 +181,17 @@ def add_insurance(request, user_id):
         new_insurance.save()
     return redirect('/insurance', user_id=user_id)
 
+def delete_insurance(request, id):
+    del_insurance = Insurance.objects.get(id=id)
+    del_insurance.delete()
+    # form = InsuranceForm(request.POST)
+    # if form.is_valid():
+    #     delete_insurance = form.save(commit=False)
+    #     delete_insurance.user_id = user_id
+    #     delete_insurance.save()
+    return redirect('/insurance')
+
+
 def add_file(request):
     document_file = request.FILES.get('doc-file', None)
     user_id = request.user.id
