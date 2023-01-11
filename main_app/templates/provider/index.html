@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="card-text">
-    <form action="" method="POST">
-      {% csrf_token %}
-      
-      {{ form }}
-      <div class="d-grid gap-0 ">
-        <input type="submit" value="Submit!" class="btn btn-success">
-        </div>
-      </form>
+
+
     <div class="container">
+        
+        <form action="" method="POST">
+            {% csrf_token %}
+            
+            {{ form }}
+            <div class="d-grid gap-0 ">
+              <input type="submit" value="Submit!" class="btn btn-success">
+            </div>
+        </form>
         
         <h1>List of Providers</h1>
 

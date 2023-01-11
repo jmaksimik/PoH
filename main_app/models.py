@@ -56,7 +56,7 @@ class Appointment(models.Model):
     def get_absolute_url(self):
         return reverse('appointments_index')
 
-
+# Do we really want cascase delete on these??
 class Prescription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=50, verbose_name='Prescription Name')
