@@ -8,7 +8,162 @@
 
 
 <div class="container-fluid">
+
   <div class="row align-items-center">
+    <div class="col-8">
+      <h1 class="text-center my-2 display-3">{{ user.first_name }} {{ user.last_name }}'s Medications</h1>
+      
+
+    </div>
+    <div class="col-4">
+      <a class="btn btn-success btn-lg" href="#add-prescription">Add New Prescription</a>
+
+    </div>
+  </div>
+  <hr class="border border-primary border-3 opacity-75">
+
+  <div class="row">
+
+    <div class="col-6 align-self-center mx-0">
+      <div class="text-decoration-underline">
+        <h1 class="text-center display-5">Current</h1>
+      </div>
+      <div class="accordion" id="accordionPrescribed">
+        {% for prescription in prescriptions %}
+        {% if prescription.user == user %}
+          {% if prescription.prescribed %}
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-{{ prescription.id }}">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collasp-{{ prescription.id }}" aria-expanded="true" aria-controls="collasp-{{ prescription.id }}">
+                {{ prescription.name }}
+              </button>
+            </h2>
+            <div id="collasp-{{ prescription.id }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ prescription.id }}" data-bs-parent="#accordionPrescribed">
+              <div class="accordion-body">
+                <div class="card mx-2">
+                  <div class="card-header mx-0">
+                    <div class="row g-0">
+                      <div class="col align-self-center mx-0">
+
+                        <h6 class="card-subtitle text-right text-muted">Prescribed to: {{user.first_name}} {{user.last_name}} - {{ prescription.user }}</h6>
+                        <h6 class="card-subtitle text-right text-muted">Prescribed by: {{ prescription.doctor }}</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row g-0">
+                    <div class="col-4">
+                      <div class="card-body">
+                        <p class="card-text">Medication: {{ prescription.name }}</p>
+                        <p class="card-text">Dose: {{ prescription.size }}</p>
+                      </div>
+                    </div>
+                    <div class="col-8">
+                      <div class="card-body">
+                        <p class="card-text">Use Instructions: {{ prescription.instructions }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="card-body">
+                        <p class="card-text">Notes: {{ prescription.notes }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="card-action">
+                      <div class="form-check form-switch">
+                        <a href="{% url 'prescriptions_update' prescription.id %}"><button class="btn btn-lg btn-light" type="button">Update Prescription</button></a>
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    
+    <div class="col-6 align-self-center mx-0">
+      <div class="text-decoration-underline">
+        <h1 class="text-center display-5">Past</h1>
+      </div>
+      <div class="accordion" id="accordionPrescribed">
+        {% for prescription in prescriptions %}
+        {% if prescription.user == user %}
+          {% if prescription.prescribed == False %}
+        
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-{{ prescription.id }}">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collasp-{{ prescription.id }}" aria-expanded="true" aria-controls="collasp-{{ prescription.id }}">
+                {{ prescription.name }}
+              </button>
+            </h2>
+            <div id="collasp-{{ prescription.id }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ prescription.id }}" data-bs-parent="#accordionPrescribed">
+              <div class="accordion-body">
+                <div class="card mx-2">
+                  <div class="card-header mx-0">
+                    <div class="row g-0">
+                      <div class="col align-self-center mx-0">
+
+                        <h6 class="card-subtitle text-right text-muted">Prescribed to: {{user.first_name}} {{user.last_name}} - {{ prescription.user }}</h6>
+                        <h6 class="card-subtitle text-right text-muted">Prescribed by: {{ prescription.doctor }}</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row g-0">
+                    <div class="col-4">
+                      <div class="card-body">
+                        <p class="card-text">Medication: {{ prescription.name }}</p>
+                        <p class="card-text">Dose: {{ prescription.size }}</p>
+                      </div>
+                    </div>
+                    <div class="col-8">
+                      <div class="card-body">
+                        <p class="card-text">Use Instructions: {{ prescription.instructions }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="card-body">
+                        <p class="card-text">Notes: {{ prescription.notes }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="card-action">
+                      <div class="form-check form-switch">
+                        <a href="{% url 'prescriptions_update' prescription.id %}"><button class="btn btn-lg btn-light" type="button">Update Prescription</button></a>
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    
+  </div>
+
+  
+
+
+
+
+
+
+
+
+  <!-- <div class="row align-items-center">
     <div class="col-8">
       <h1 class="text-center my-4">{{ user.first_name }} {{ user.last_name }}'s Medications</h1>
 
@@ -71,9 +226,9 @@
     {% endif %}
     {% endfor %}
      
-  </div>
+  </div> -->
   
-  <hr>
+  <hr class="border border-secondary border-2 opacity-50">
 
 </div>
 <div class="container-fluid my-2" id="add-prescription">
