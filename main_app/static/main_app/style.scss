@@ -6,8 +6,15 @@
 .navbar-brand {
     @include transition-ease;
     &:hover {
-        background-color: $primary-color-dash;
+        background-color: $primary-color-nav;
     }
 }
 
+.navbar-dash {
+    @extend .navbar-brand;
+}
+
+.navbar-menu {
+    @extend .navbar-brand;
+}
 
