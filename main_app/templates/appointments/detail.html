@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="jumbotron p-5 mb-4 mt-5 rounded-3">
+<div class="jumbotron p-5 mb-4 mt-5 rounded-3 appointments-jumbotron">
   <div class="container-fluid py-5;">
     <h1 class="display-4 mb-4 fw-bold">Appointment Details</h1>
     <hr class="mb-4">
     <h3>You have an appointment scheduled on {{ appointment.date }} with {{ appointment.doctor }}</h3>
     <p class="col-md-8 fs-4">Date: {{ appointment.date }}</p>
     <p class="col-md-8 fs-4">Provider: {{ appointment.doctor }}</p>
-    <p class="col-md-8 fs-4">Patient: {{ appointment.patient }}</p>
     <hr class="mb-4">
     <a href="{% url 'appointments_update' appointment.id %}"><button class="btn btn-lg btn-light" type="button">Edit Appointment</button></a>
     <a href="{% url 'appointments_delete' appointment.id %}"><button class="btn btn-lg btn-dark" type="button">Delete Appointment</button></a>

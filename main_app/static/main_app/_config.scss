@@ -1,14 +1,8 @@
 
 $primary-color-nav: rgb(231, 241, 233);
+$primary-color-provider: rgb(203, 177, 232);
 
 
 @mixin transition-ease {
     transition: all .5s ease-in-out;
 }
-
-@mixin center($width: null, $height: null) {
-    position: absolute;
-
-    top: 50vh;
-    left: 30vw;
-  }
