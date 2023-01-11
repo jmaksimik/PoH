@@ -160,9 +160,18 @@ def provider_search(request):
         if form.is_valid():
             keyword = form.cleaned_data["keyword"]
             response = requests.get(
-            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={keyword}&offset=0&size=10&distinct=1').json()
+            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={keyword}&offset=0&size=300&distinct=1').json()
+            K = "Rndrng_NPI"
 
-            return render(request, 'provider/index.html', {'response': response})
+            memo = set()
+            res = []
+            for sub in response:
+                if sub[K] not in memo:
+                    res.append(sub)
+
+                    memo.add(sub[K])
+            
+            return render(request, 'provider/index.html', {'response': res, 'form':form})
         else:   
             return HttpResponse("Form is not properly completed")
     else:
