@@ -1,11 +1,15 @@
 from django.forms import ModelForm 
-from .models import Patient, Prescription, Document
+from .models import Patient, Prescription, Document, Insurance
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError
+from django.db.models import Q
 
+class SearchProvider(forms.Form):
+    keyword = forms.CharField(label="keyword", max_length=50)
+    # state_abbrev = forms.CharField(label='state_abbrev', max_length=2)
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -103,3 +107,15 @@ class PrescriptionForm(ModelForm):
     #         )
     #     self.fields['name'].label = "NAME HERE"
         # self.fields['name'].widget.attrs.update({'class': "form-control-2"})
+
+class InsuranceForm(ModelForm):
+    class Meta:
+        model = Insurance
+        fields = ['insurance_company', 'subscriber', 'member', 'group']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['insurance_company'].widget.attrs.update({'class': 'form-control'})
+        self.fields['subscriber'].widget.attrs.update({'class': 'form-control'})
+        self.fields['member'].widget.attrs.update({'class': 'form-control'})
+        self.fields['group'].widget.attrs.update({'class': 'form-control'})

@@ -90,3 +90,20 @@ class Document(models.Model):
 
     def __str__(self):
         return f'{self.title} @ {self.url}'
+
+class Insurance(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    insurance_company = models.CharField(
+        verbose_name = 'Insurance Company',
+        choices = [('UH', 'UnitedHealth'), ('KF', 'Kaiser Foundation'), ('AI', 'Anthem Inc'),
+        ('CC', 'Centene Corp'), ('HU','Humana'), ('CV', 'CVS'), ('HC', 'Health Care Service Corporation'),
+        ('CH', 'Cigna  Health'), ('MH', 'Molina Healthcare'), ('IH', 'Independence Health Group')],
+        max_length= 2,
+        blank=True, null=True
+    )
+    subscriber = models.CharField(max_length=50, verbose_name='Name', blank=True)
+    member = models.CharField(max_length=20, verbose_name='Member ID', blank=True)
+    group = models.CharField(max_length=20, verbose_name='Group', blank=True)
+
+    def __str__(self):
+        return f"{self.insurance_company} - {self.member}"
