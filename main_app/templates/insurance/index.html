@@ -6,7 +6,6 @@
     <div class="container-fluid py-5;">
       <h3 class="display-4 mb-4 fw-bold">My Insurance</h3>
       <hr class="mb-4">
-<<<<<<< HEAD
       <div class="row justify-content-evenly">
         <div class="col-5">
             {% for insurance in insurances %}  
@@ -20,27 +19,6 @@
                 <div class="row">
                   <div class="col-7"><h4 class="card-text">Group {{ insurance.group }}</h4></div>
                   <div class="col-5"><p>FULLY INSURED</p></div>
-=======
-    <div class="row">
-      {% for insurance in insurances  %}
-    <div class="insurance-container">
-    <div class="row g-5 justify-content-start">
-        <div class="col-sm-4">
-        <div class="card shadow insurances-card">
-            <!-- <div class="row g-0"> -->
-            <!-- <div class="col-6 col-sm-3">
-                <h1 class="my-4 mx-4 text-center bi bi-calendar-fill"></h1>
-            </div> -->
-            <div class="col-6 col-sm-8">
-                <div class="card-body d-flex flex-column">
-                <div class="h-100">
-                    <h2 class="card-title">{{ insurance.get_insurance_company_display}}</h2>
-                    <h4 class="card-title fw-bold">{{ insurance.subscriber }}</h4>
-                    <h5 class="card-title">Member ID {{ insurance.member }}</h5>
-                    <h5 class="card-title">Group {{ insurance.group }}</h5>
-                    <a href="" class="card-link text-muted"> Edit</a>
-                    <a href="" class="card-link text-muted"> Delete</a>
->>>>>>> main
                 </div>
                 <a href="{% url 'delete_insurance' insurance.id %}" class="card-link text-muted mb-2"> DELETE</a>
               </div>
