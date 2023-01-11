@@ -152,6 +152,7 @@ def add_prescription(request, user_id):
 #     return render (request, 'provider/index.html', {'form':SearchProvider(), 'keyword': provider_search})
 
 def provider_search(request):
+    form = None
     if request.method == "POST":
         form = SearchProvider(request.POST)
     
@@ -165,7 +166,23 @@ def provider_search(request):
             return HttpResponse("Form is not properly completed")
     else:
         form = SearchProvider()
+        context = { 'form': SearchProvider(), 'response': response}
     return render(request, 'provider/index.html', {'form':form})
+
+    # Need to return something 
+# def index(request):
+#     result = None
+#     form = None
+#     if request.method == 'POST':  
+#         form = browse(request.POST, request.FILES)  
+#         if form.is_valid():  
+#             handle_uploaded_file(request.FILES['file']) # store file in upload folder
+#             path = "pdfextractor/static/upload/"+ str(request.FILES['file'])#path of selected file
+#             result = extract_data(path) # extract data from file
+#     else:
+#         form = browse()
+#         context = {"form": form, "result": result}
+#     return render(request,'pdfextractor/index.html', context)
 
     # print(data)
     # context = {
