@@ -151,9 +151,11 @@ def provider_search(request):
         form = SearchProvider(request.POST)
     
         if form.is_valid():
-            keyword = form.cleaned_data["keyword"]
+            city = form.cleaned_data["city"]
+            spec = form.cleaned_data["spec"]
+            
             response = requests.get(
-            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={keyword}&offset=0&size=300&distinct=1').json()
+            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?column=&keyword={city}%20{spec}&offset=0&size=300').json()
             K = "Rndrng_NPI"
 
             memo = set()

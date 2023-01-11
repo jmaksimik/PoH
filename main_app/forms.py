@@ -8,7 +8,8 @@ from django.core.exceptions import ValidationError
 from django.db.models import Q
 
 class SearchProvider(forms.Form):
-    keyword = forms.CharField(label="Keyword", max_length=50)
+    city = forms.CharField(label="Location", max_length=50, widget=forms.TextInput(attrs={'placeholder': 'City or Zip'}))
+    spec = forms.CharField(label="Specialty", max_length=50, required=False, widget=forms.TextInput(attrs={'placeholder': 'Provider Type'}))
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
