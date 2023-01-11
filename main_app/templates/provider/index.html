@@ -4,7 +4,7 @@
 <div class="provider-container mx-auto shadow">
     
   
-    <div class="provider-search-container">
+    <div class="provider-search-container shadow">
     <h1 class="text-center fw-bold">Find A Provider Near You</h1>
   
     <hr>
@@ -15,31 +15,27 @@
         
               <input type="submit" value="Submit!" class="btn btn-success provider-button">
             </form>
-        
         </div>
     
         <br>
-    <div class="provider-results-container">
+    <div class="provider-results-container shadow">
         <h1 class="text-center">List of Providers</h1>
     
         <div class="card provider-results-card">
-        <table class="table providers-table table-striped">
+        <table class="table providers-table table-striped  table-hover">
             <thead>
                 <tr>
-                    <th>NPI</th>
                     <th>Provider Name</th>
                     <th>Specialty</th>
                     <th>City</th>
                     <th>State</th>
                     <th>Street</th>
                     <th>Zip</th>
-                    
                 </tr>
             </thead>
             <tbody>
                 {% for provider in response %}
                 <tr>
-                    <td>{{ provider.Rndrng_NPI }}</td>
                     <td>{{ provider.Rndrng_Prvdr_Last_Org_Name }}</td>
                     <td>{{ provider.Rndrng_Prvdr_Type }}</td>
                     <td>{{ provider.Rndrng_Prvdr_City }}</td>

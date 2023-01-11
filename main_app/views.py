@@ -110,7 +110,6 @@ class AppointmentDelete(DeleteView):
 
 class PrescriptionCreate(CreateView):
     model = Prescription
-    # fields = ['name', 'size']
     form_class = PrescriptionForm
     template_name = "prescriptions/prescription_form.html"
 
@@ -143,19 +142,17 @@ def add_prescription(request, user_id):
         new_prescription.save()
     return redirect('/prescriptions', user_id=user_id)
 
-
-# def provider_home(request):
-#     return render (request, 'provider/index.html', {'form':SearchProvider(), 'keyword': provider_search})
-
 def provider_search(request):
     form = None
     if request.method == "POST":
         form = SearchProvider(request.POST)
     
         if form.is_valid():
-            keyword = form.cleaned_data["keyword"]
+            city = form.cleaned_data["city"]
+            spec = form.cleaned_data["spec"]
+            
             response = requests.get(
-            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?keyword={keyword}&offset=0&size=300&distinct=1').json()
+            f'https://data.cms.gov/data-api/v1/dataset/862ed658-1f38-4b2f-b02b-0b359e12c78a/data?column=&keyword={city}%20{spec}&offset=0&size=300').json()
             K = "Rndrng_NPI"
 
             memo = set()

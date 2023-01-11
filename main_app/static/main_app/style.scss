@@ -26,7 +26,7 @@
     background-color: $primary-color-provider;
     margin: 0 auto;
     text-align: center;
-
+    border-radius: 10px;
 }
 
 .provider-results-container {
@@ -38,9 +38,15 @@
 }
 
 .provider-container {
-    
     justify-content: center;
     margin-top: 7%;
-    border-radius: 10px;
     width: 80vw;
 }
+
+.appointments-jumbotron {
+    width: 80vw;
+    justify-content: center;
+    margin-left: 9vw;
+    border-radius: 10px;
+}
+
