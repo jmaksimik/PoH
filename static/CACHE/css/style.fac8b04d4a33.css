@@ -1,0 +1,20 @@
+/* line 3, main_app/static/main_app/_home.scss */
+home-carousel {
+  min-width: 100%; }
+
+/* line 3, main_app/static/main_app/_profile.scss */
+.userLogo {
+  background-color: #e7f1e9;
+  border-radius: 50%; }
+
+/* line 6, main_app/static/main_app/style.scss */
+.navbar-brand, .navbar-menu, .navbar-dash {
+  transition: all .5s ease-in-out; }
+  /* line 8, main_app/static/main_app/style.scss */
+  .navbar-brand:hover, .navbar-menu:hover, .navbar-dash:hover {
+    background-color: #e7f1e9; }
+
+/* line 21, main_app/static/main_app/style.scss */
+.appointments-container {
+  padding: 10rem;
+  margin: auto; }
