@@ -37,16 +37,13 @@ def documents_index(request):
 
 
 def prescriptions_index(request):
-    prescriptions = Prescription.objects.all
-    
-    
+    prescriptions = Prescription.objects.all    
     prescription_form = PrescriptionForm()
 
     return render(request, 'prescriptions/index.html',
         {
             'prescriptions': prescriptions,
             'prescription_form': prescription_form,
-            
         })
 
 def insurance_index(request):
@@ -142,8 +139,6 @@ def add_prescription(request, user_id):
     
     if form.is_valid():
         new_prescription = form.save(commit=False)
-        # new_prescription.name = data[2]['DISPLAY_NAME'][0]
-        # new_prescription.size = data[2]['STRENGTHS_AND_FORMS'][0][0]
         new_prescription.user_id = user_id
         new_prescription.save()
     return redirect('/prescriptions', user_id=user_id)
@@ -178,30 +173,6 @@ def provider_search(request):
         form = SearchProvider()
     return render(request, 'provider/index.html',{'form':form})
 
-    # Need to return something 
-# def index(request):
-#     result = None
-#     form = None
-#     if request.method == 'POST':  
-#         form = browse(request.POST, request.FILES)  
-#         if form.is_valid():  
-#             handle_uploaded_file(request.FILES['file']) # store file in upload folder
-#             path = "pdfextractor/static/upload/"+ str(request.FILES['file'])#path of selected file
-#             result = extract_data(path) # extract data from file
-#     else:
-#         form = browse()
-#         context = {"form": form, "result": result}
-#     return render(request,'pdfextractor/index.html', context)
-
-    # print(data)
-    # context = {
-    #     'city' : data[0]['Rndrng_Prvdr_City'],
-    #     'state' : data[0]['Rndrng_Prvdr_State_Abrvtn'],
-    #     'last' : data[0]['Rndrng_Prvdr_Last_Org_Name'],
-    #     'zip' : data[0]['Rndrng_Prvdr_Zip5'],
-    #     'spec' : data[0]['Rndrng_Prvdr_Type']
-    # }
-
 def add_insurance(request, user_id):
     form = InsuranceForm(request.POST)
     if form.is_valid():
@@ -209,6 +180,17 @@ def add_insurance(request, user_id):
         new_insurance.user_id = user_id
         new_insurance.save()
     return redirect('/insurance', user_id=user_id)
+
+def delete_insurance(request, insurance_id):
+    del_insurance = Insurance.objects.get(id=id)
+    del_insurance.delete()
+    # form = InsuranceForm(request.POST)
+    # if form.is_valid():
+    #     delete_insurance = form.save(commit=False)
+    #     delete_insurance.user_id = user_id
+    #     delete_insurance.save()
+    return redirect('/insurance', id=id)
+
 
 def add_file(request):
     document_file = request.FILES.get('doc-file', None)
