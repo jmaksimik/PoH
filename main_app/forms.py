@@ -7,6 +7,7 @@ from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError
 from django.db.models import Q
 
+
 class SearchProvider(forms.Form):
     city = forms.CharField(label="Location", max_length=50, widget=forms.TextInput(attrs={'placeholder': 'City or Zip'}))
     spec = forms.CharField(label="Specialty", max_length=50, required=False, widget=forms.TextInput(attrs={'placeholder': 'Provider Type'}))
