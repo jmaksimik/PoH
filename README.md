@@ -13,9 +13,9 @@ The application is focused on helping users pursue a life of healthy living.
 <img src="https://imgur.com/fnu1Jz9.jpg">
 
 As a new user, create a new account by entering your name, email and password. If you already have an account, click **Log In** and login to your credentials.
-##### Sign Up
+**Sign Up**
 <img src="https://imgur.com/decsnSH.jpg">
-##### Log In
+**Log In**
 <img src="https://imgur.com/wZjBeOf.jpg">
 
 ## Update Profile
@@ -68,6 +68,7 @@ Patients can search for providers near them by simply typing in the location and
 ## Get Started
 - View our [Trello board](https://trello.com/b/cEoeEYxi/scrum-board)
 - View our [Wireframe](https://www.figma.com/file/bFrTicyZRb7EI9buUncp1w/Project-3?node-id=0%3A1&t=EsoFekZaQLuCadps-0)
+- View our ERD below:
 <img src="https://imgur.com/aa0Sa11.jpg">
 
 ## Next Steps
