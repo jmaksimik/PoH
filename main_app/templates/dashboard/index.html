@@ -2,43 +2,43 @@
 
 {% block content %}
 
-<div class="dashboard-container mx-auto shadow">
+<div class="dashboard-container shadow mx-auto">
     <br>
     <h1 class="text-center fw-bold">My Dashboard</h1>
     <hr>
     <br>
-    <div class="row mx-5 my-5 px-5 py-5 justify-content-center">
-        <div class="col-md-4">
-            <a href="{% url 'appointments_index' %}" class="nav-link">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3  justify-content-center">
+        <div class="col ">
             <div class="dash-card shadow appointment-card text-white mb-4" style="width: 18rem;">
-                <div class="dash-card-body">
-                <h1 class="card-title bi bi-calendar3"></h1>
-                <h3>Appointments</h3>
-                </div>
+                <a href="{% url 'appointments_index' %}" class="nav-link">
+                    <div class="dash-card-body justify-self-center">
+                        <h1 class="card-title bi bi-calendar3"></h1>
+                        <h3>Appointments</h3>
+                    </div>
+                </a>
             </div>
-            </a>
         </div>
-        <div class="col-md-4">
-            <a href="{% url 'prescriptions_index' %}" class="nav-link">
+        <div class="col ">
             <div class="dash-card shadow medicine-card text-white mb-4" style="width: 18rem;">
-                <div class="dash-card-body">
-                <h1 class="card-title bi bi-prescription"></h1>
-                <h3>Manage My Medications</h3>
-                </div>
-            </div>
-            </a>
+                <a href="{% url 'prescriptions_index' %}" class="nav-link">
+                    <div class="dash-card-body">
+                        <h1 class="card-title bi bi-prescription"></h1>
+                        <h3>Manage My Medications</h3>
+                    </div>
+                </a>
+            </div>  
         </div>
-        <div class="col-md-4">
-            <a href="{% url 'insurance_index' %}" class="nav-link">
+        <div class="col">
             <div class="dash-card shadow insurance-card text-white mb-4" style="width: 18rem;">
-                <div class="dash-card-body">
-                <h1 class="card-title bi bi-person-vcard-fill"></h1>
-                <h3>View Insurance</h3>
-                </div>
+                <a href="{% url 'insurance_index' %}" class="nav-link">
+                    <div class="dash-card-body">
+                        <h1 class="card-title bi bi-person-vcard-fill"></h1>
+                        <h3>View Insurance</h3>
+                    </div>
+                </a>
             </div>
-            </a>
         </div>
-        <div class="col-md-4">
+        <div class="col">
             <div class="dash-card shadow contact-card text-white mb-4" style="width: 18rem;">
                 <div class="dash-card-body">
                 <h1 class="card-title bi bi-send-fill"></h1>
@@ -46,26 +46,27 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <a href = "{% url 'documents_index' %}" class="nav-link">
+        <div class="col">
             <div class="dash-card shadow  document-card text-white mb-4" style="width: 18rem;">
-                <div class="dash-card-body">
-                <h1 class="card-titlebi bi-file-earmark-text-fill"></h1>
-                <h3>Manage My Documents</h3>
-                </div>
+                <a href = "{% url 'documents_index' %}" class="nav-link">
+                    <div class="dash-card-body">
+                        <h1 class="card-titlebi bi-file-earmark-text-fill"></h1>
+                        <h3>Manage My Documents</h3>
+                    </div>
+                </a>
             </div>
-            </a>
+            
         </div>
-        <div class="col-md-4">
-            <a href = "{% url 'provider_search' %}" class="nav-link">
+        <div class="col">
             <div class="dash-card shadow find-card text-white mb-4" style="width: 18rem;">
-                <div class="dash-card-body">
-                <h1 class="card-title bi bi-geo-alt"></h1>
-                <h3>Find A Provider</h3>
-                </div>
+                <a href = "{% url 'provider_search' %}" class="nav-link">
+                    <div class="dash-card-body">
+                        <h1 class="card-title bi bi-geo-alt"></h1>
+                        <h3>Find A Provider</h3>
+                    </div>
+                </a>
             </div>
         </div>
-        </a>
     </div>
 </div>
 {% endblock content %}
