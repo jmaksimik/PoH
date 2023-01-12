@@ -73,6 +73,7 @@ Patients can search for providers near them by simply typing in the location and
 
 
 ## Get Started
+- View our [Pitch Deck](https://docs.google.com/presentation/d/1hrvYnVxwaJHQWGmGXbpWpnENsfyfMZkzNaIKi2VsNl0/edit#slide=id.p)
 - View our [Trello board](https://trello.com/b/cEoeEYxi/scrum-board)
 - View our [Wireframe](https://www.figma.com/file/bFrTicyZRb7EI9buUncp1w/Project-3?node-id=0%3A1&t=EsoFekZaQLuCadps-0)
 - View our ERD below:
