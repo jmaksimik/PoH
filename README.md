@@ -63,14 +63,7 @@ Patients can search for providers near them by simply typing in the location and
 - HTML
 - CSS
 - JavaScript
-- Sass
-- Bootstrap
-- AWS
-- Docker
-- Poerty
-- PostgresSQL
-- Requests - API
-
+- SaSS
 
 ## Get Started
 - View our [Pitch Deck](https://docs.google.com/presentation/d/1hrvYnVxwaJHQWGmGXbpWpnENsfyfMZkzNaIKi2VsNl0/edit#slide=id.p)
@@ -85,4 +78,3 @@ In the future, we would like to users to be able to:
 2. Manage consent forms and pre-visit documentation
 3. Track health status and progress
 4. Handle medical bills
-5. More useful information for user on their dashboarb, such as upcoming appointments, medicaions close to refil, or bills due.
