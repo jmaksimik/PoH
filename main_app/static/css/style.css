@@ -48,12 +48,16 @@ main .dashboard-container {
     overflow: hidden;
     transition: all 1.0s ease;
     border-radius: 10px;
+    
     height: 150px;
-    margin: 10px;
+    margin: 5px;
+    justify-content: center;
 }
 
 .dash-card-body {
-    margin: 5px;
+    justify-content: center;
+    text-align: center;
+    margin-top: 8%;
     padding-bottom: 15px;
 }
 
@@ -61,10 +65,10 @@ main .dashboard-container {
     transform: scale(1.5);
 }
 
-.dash-card-body {
+/* .dash-card-body {
     text-align: center;
     margin-top: 30px;
-}
+}  REDUNDANT*/
 
 .appointment-card {
     background-color: rgb(249, 161, 161);
@@ -180,5 +184,4 @@ h1, h2, h3, h4 {
 .test {
     background: rgb(245, 254, 245);
 }
-
 
