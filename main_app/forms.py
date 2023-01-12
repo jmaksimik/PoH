@@ -117,6 +117,6 @@ class InsuranceForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['insurance_company'].widget.attrs.update({'class': 'form-control'})
-        self.fields['subscriber'].widget.attrs.update({'class': 'form-control'})
-        self.fields['member'].widget.attrs.update({'class': 'form-control'})
-        self.fields['group'].widget.attrs.update({'class': 'form-control'})
+        self.fields['subscriber'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter Name'})
+        self.fields['member'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter Member ID Number'})
+        self.fields['group'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter Group Number'})
