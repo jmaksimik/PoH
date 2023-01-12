@@ -1,6 +1,6 @@
 # the Pursuit of HealthYness
 ### A journey to a healthYer you.
-Created by: Bushra Ahmed, John Maksimik, Mike Leys, Sean Turnball
+Created by: Bushra Ahmed, John Maksimik, Mike Leys, Sean Turnbull
 
 "Launch PoH Here"
 
