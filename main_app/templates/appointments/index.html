@@ -35,7 +35,10 @@
 </div>
 {% endfor %}
   <br>
-  <a href="{% url 'appointments_create' %}"><button class="btn btn-lg btn-dark my-4">Schedule A New Appointment</button></a>
+  <div class="d-grid gap-4 col-4 mx-auto">
+    <a href="{% url 'appointments_create' %}"><button class="btn btn-lg btn-dark my-4">Schedule A New Appointment</button></a>
+
+  </div>
   <br><br>
 </div>
 {% endblock content %}
