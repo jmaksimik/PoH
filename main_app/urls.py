@@ -24,5 +24,5 @@ urlpatterns = [
     path('provider/', views.provider_search, name='provider_search'),
     path('insurance/', views.insurance_index, name='insurance_index'),
     path('insurance/<int:user_id>/add_insurance/', views.add_insurance, name='add_insurance'),
-    
+    path('insurance/<int:id>/delete_insurance/', views.delete_insurance, name='delete_insurance'),
 ]
