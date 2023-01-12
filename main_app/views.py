@@ -1,14 +1,13 @@
 from django.shortcuts import render, redirect
 
-from django.contrib.auth.models import User
-from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
-from django.views.generic import ListView, DetailView 
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView 
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 
-from .models import Patient, Doctor, Appointment, Prescription, Insurance, Document
+from .models import Appointment, Prescription, Insurance, Document
 from .forms import UserForm, PatientForm, PrescriptionForm, NewUserForm, SearchProvider, InsuranceForm
 
 import requests

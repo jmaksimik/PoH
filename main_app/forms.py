@@ -1,11 +1,10 @@
 from django.forms import ModelForm 
-from .models import Patient, Prescription, Document, Insurance
+from .models import Patient, Prescription, Insurance
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError
-from django.db.models import Q
 
 
 class SearchProvider(forms.Form):
