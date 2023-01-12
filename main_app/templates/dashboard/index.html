@@ -7,11 +7,11 @@
     <h1 class="text-center fw-bold">My Dashboard</h1>
     <hr>
     <br>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-        <div class="col align-self-center">
-            <div class="dash-card shadow appointment-card text-white" style="width: 18rem;">
-                <a href="{% url 'appointments_index' %}" class="nav-link text-center">
-                    <div class="dash-card-body">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3  justify-content-center">
+        <div class="col ">
+            <div class="dash-card shadow appointment-card text-white mb-4" style="width: 18rem;">
+                <a href="{% url 'appointments_index' %}" class="nav-link">
+                    <div class="dash-card-body justify-self-center">
                         <h1 class="card-title bi bi-calendar3"></h1>
                         <h3>Appointments</h3>
                     </div>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="dash-card shadow medicine-card text-white" style="width: 18rem;">
+            <div class="dash-card shadow medicine-card text-white mb-4" style="width: 18rem;">
                 <a href="{% url 'prescriptions_index' %}" class="nav-link">
                     <div class="dash-card-body">
                         <h1 class="card-title bi bi-prescription"></h1>
@@ -29,7 +29,7 @@
             </div>  
         </div>
         <div class="col">
-            <div class="dash-card shadow insurance-card text-white" style="width: 18rem;">
+            <div class="dash-card shadow insurance-card text-white mb-4" style="width: 18rem;">
                 <a href="{% url 'insurance_index' %}" class="nav-link">
                     <div class="dash-card-body">
                         <h1 class="card-title bi bi-person-vcard-fill"></h1>
@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="dash-card shadow contact-card text-white" style="width: 18rem;">
+            <div class="dash-card shadow contact-card text-white mb-4" style="width: 18rem;">
                 <div class="dash-card-body">
                 <h1 class="card-title bi bi-send-fill"></h1>
                 <h3>Contact My Provider</h3>
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="dash-card shadow  document-card text-white" style="width: 18rem;">
+            <div class="dash-card shadow  document-card text-white mb-4" style="width: 18rem;">
                 <a href = "{% url 'documents_index' %}" class="nav-link">
                     <div class="dash-card-body">
                         <h1 class="card-titlebi bi-file-earmark-text-fill"></h1>
@@ -59,7 +59,7 @@
         </div>
         <div class="col">
             <div class="dash-card shadow find-card text-white mb-4" style="width: 18rem;">
-                <a href = "{% url 'provider_search' %}" class="nav-link"></a>
+                <a href = "{% url 'provider_search' %}" class="nav-link">
                     <div class="dash-card-body">
                         <h1 class="card-title bi bi-geo-alt"></h1>
                         <h3>Find A Provider</h3>
