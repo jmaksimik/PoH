@@ -38,7 +38,7 @@ If an upcoming appointment needs to be added, simply click **Schedule A New Appo
 Users are able to manage medications and categorize prescriptions depending on if a medication is currently being taken or not. 
 <img src="https://imgur.com/eFPvhXw.jpg">
 
-If a user has been prescribed a new medication, simply scroll below to fill out the **New Prescription Form** and add to the list above!
+If a user has been prescribed a new medication, simply press the button on top or manually scroll below to fill out the **New Prescription Form** and add to the list above!
 <img src="https://imgur.com/jh6ckGv.jpg">
 
 ### Insurance
@@ -64,6 +64,13 @@ Patients can search for providers near them by simply typing in the location and
 - CSS
 - JavaScript
 - SaSS
+- Bootstrap
+- AWS
+- Docker
+- Poerty
+- PostgresSQL
+- Requests - API
+
 
 ## Get Started
 - View our [Trello board](https://trello.com/b/cEoeEYxi/scrum-board)
@@ -77,3 +84,4 @@ In the future, we would like to users to be able to:
 2. Manage consent forms and pre-visit documentation
 3. Track health status and progress
 4. Handle medical bills
+5. More useful information for user on their dashboarb, such as upcoming appointments, medicaions close to refil, or bills due.
