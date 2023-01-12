@@ -63,7 +63,7 @@ Patients can search for providers near them by simply typing in the location and
 - HTML
 - CSS
 - JavaScript
-- SaSS
+- Sass
 - Bootstrap
 - AWS
 - Docker
