@@ -1,14 +1,18 @@
 from django.shortcuts import render, redirect
+
+from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from django.views.generic import ListView, DetailView 
 from django.contrib.auth import login, authenticate
-from .models import Patient, Doctor, Appointment, Prescription, Insurance
-from .models import Patient, Doctor, Appointment, Prescription, Document
-from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
+
+from .models import Patient, Doctor, Appointment, Prescription, Insurance, Document
 from .forms import UserForm, PatientForm, PrescriptionForm, NewUserForm, SearchProvider, InsuranceForm
+
 import requests
 import json
-from django.http import HttpResponse
 import uuid 
 import boto3 
 S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
@@ -21,9 +25,11 @@ BUCKET = 'pursuitofhealth'
 def home(request):
     return render(request, 'home.html')
 
+@login_required
 def dash_index(request):
     return render(request, 'dashboard/index.html')
 
+@login_required
 def appointments_index(request):
     appointments = Appointment.objects.filter(user=request.user)
     return render(request, 'appointments/index.html', 
@@ -31,11 +37,11 @@ def appointments_index(request):
             'appointments': appointments,
         })
 
-
+@login_required
 def documents_index(request):
     return render(request, 'documents/index.html')
 
-
+@login_required
 def prescriptions_index(request):
     prescriptions = Prescription.objects.all    
     prescription_form = PrescriptionForm()
@@ -45,14 +51,15 @@ def prescriptions_index(request):
             'prescriptions': prescriptions,
             'prescription_form': prescription_form,
         })
-
+        
+@login_required
 def insurance_index(request):
     insurances = Insurance.objects.all
     insurance_form = InsuranceForm()
     return render(request, 'insurance/index.html', {'insurances': insurances, 'insurance_form': insurance_form,})
 
 # User functionality
-
+@login_required
 def update_profile(request):
     error_message = ''
     if request.method == 'POST':
@@ -87,12 +94,12 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-
-class AppointmentDetail(DetailView):
+class AppointmentDetail(DetailView, LoginRequiredMixin):
     model = Appointment
     template_name = 'appointments/detail.html'
 
-class AppointmentCreate(CreateView):
+
+class AppointmentCreate(CreateView, LoginRequiredMixin):
     model = Appointment
     fields = ['date', 'doctor']
 
@@ -100,15 +107,16 @@ class AppointmentCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class AppointmentUpdate(UpdateView):
+
+class AppointmentUpdate(UpdateView, LoginRequiredMixin):
     model = Appointment
     fields = ['date', 'doctor']
 
-class AppointmentDelete(DeleteView):
+class AppointmentDelete(DeleteView, LoginRequiredMixin):
     model = Appointment
     success_url = '/appointments/'
 
-class PrescriptionCreate(CreateView):
+class PrescriptionCreate(CreateView, LoginRequiredMixin):
     model = Prescription
     form_class = PrescriptionForm
     template_name = "prescriptions/prescription_form.html"
@@ -117,12 +125,12 @@ class PrescriptionCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class PrescriptionUpdate(UpdateView):
+class PrescriptionUpdate(UpdateView, LoginRequiredMixin):
     model = Prescription
     fields = ['size', 'instructions', 'notes', 'prescribed', 'doctor']
     template_name = "prescriptions/prescription_form.html"
 
-
+@login_required
 def update_prescription(request, user_id):
     form = PrescriptionForm(request.POST)
 
@@ -131,6 +139,7 @@ def update_prescription(request, user_id):
         update_prescription.save()
     return redirect('/prescriptions', user_id=user_id)
 
+@login_required
 def add_prescription(request, user_id):
     form = PrescriptionForm(request.POST)
     
@@ -168,6 +177,7 @@ def provider_search(request):
         form = SearchProvider()
     return render(request, 'provider/index.html',{'form':form})
 
+@login_required
 def add_insurance(request, user_id):
     form = InsuranceForm(request.POST)
     if form.is_valid():
@@ -175,13 +185,6 @@ def add_insurance(request, user_id):
         new_insurance.user_id = user_id
         new_insurance.save()
     return redirect('/insurance', user_id=user_id)
-
-def delete_insurance(request, insurance_id):
-    del_insurance = Insurance.objects.get(id=id)
-    del_insurance.delete()
-
-    return redirect('/insurance', id=id)
-
 
 def add_file(request):
     document_file = request.FILES.get('doc-file', None)
