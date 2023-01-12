@@ -72,8 +72,14 @@ main .dashboard-container {
 .medicine-card {
     background-color: rgb(247, 205, 134);
 }
+.medicine-card-light {
+    background-color: rgba(247, 206, 134, 0.1);
+}
 .insurance-card {
     background-color: rgb(245, 226, 104);
+}
+.insurance-card-light {
+    background-color: rgba(245, 226, 104, 0.1);
 }
 .contact-card {
     background-color: rgb(185, 216, 159);
@@ -84,6 +90,7 @@ main .dashboard-container {
 .find-card {
     background-color: rgb(175, 140, 212);
 }
+
 
 .appointments-container {
     background-color: rgb(252, 231, 231);

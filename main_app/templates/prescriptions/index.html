@@ -7,7 +7,7 @@
 <script src='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.js'></script>
 
 
-<div class="container-fluid">
+<div class="container-fluid medicine-card-light">
 
   <div class="row align-items-center">
     <div class="col-8">
@@ -22,9 +22,9 @@
   </div>
   <hr class="border border-primary border-3 opacity-75">
 
-  <div class="row">
+  <div class="row ">
 
-    <div class="col-6 align-self-top mx-0">
+    <div class="col-6 align-self-top mx-0 ">
       <div class="text-decoration-underline">
         <h1 class="text-center display-6">Current</h1>
       </div>
@@ -35,7 +35,7 @@
    
           <div class="accordion-item mx-0 my-0">
             <h2 class="accordion-header" id="heading-{{ prescription.id }}">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collasp-{{ prescription.id }}" aria-expanded="true" aria-controls="collasp-{{ prescription.id }}">
+              <button class="accordion-button collapsed medicine-card" type="button" data-bs-toggle="collapse" data-bs-target="#collasp-{{ prescription.id }}" aria-expanded="true" aria-controls="collasp-{{ prescription.id }}">
                 <p class="fs-4 fw-bold my-0"> {{ prescription.name }}</p>
               </button>
             </h2>
@@ -78,7 +78,7 @@
    
           <div class="accordion-item mx-0 my-0">
             <h2 class="accordion-header" id="heading-{{ prescription.id }}">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collasp-{{ prescription.id }}" aria-expanded="true" aria-controls="collasp-{{ prescription.id }}">
+              <button class="accordion-button collapsed medicine-card" type="button" data-bs-toggle="collapse" data-bs-target="#collasp-{{ prescription.id }}" aria-expanded="true" aria-controls="collasp-{{ prescription.id }}">
                 <p class="fs-4 fw-bold my-0"> {{ prescription.name }}</p>
               </button>
             </h2>
@@ -110,14 +110,14 @@
       </div>
     </div>
   </div>
-  <hr class="border border-secondary border-2 opacity-50">
+  <hr class="border border-secondary border-2 opacity-50 medicine-card-light">
 </div>
 
-<div class="container-fluid my-2" id="add-prescription">
+<div class="container-fluid my-2 medicine-card-light" id="add-prescription">
   <div class="row justify-content-center">
     <div class="col-sm col-md-8 align-self-center">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body medicine-card-light">
           <div class="card-title text-center">
             
             {% if object %}
