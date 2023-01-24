@@ -2,7 +2,7 @@
 ### A journey to a healthYer you.
 Created by: Bushra Ahmed, John Maksimik, Mike Leys, Sean Turnbull
 
-"Launch PoH Here"
+[Launch PoH Here](https://snowy-sky-6053.fly.dev/)
 
 ## Pursuit of HealthYness Overview
 Pursuit of HealthYness is a patient-first application. It empowers users to manage and take charge of their own health rather than depending on unreliable outside resources.
@@ -63,7 +63,8 @@ Patients can search for providers near them by simply typing in the location and
 - HTML
 - CSS
 - JavaScript
-- SaSS
+- Sass
+- PostgreSQL
 
 ## Get Started
 - View our [Pitch Deck](https://docs.google.com/presentation/d/1hrvYnVxwaJHQWGmGXbpWpnENsfyfMZkzNaIKi2VsNl0/edit#slide=id.p)

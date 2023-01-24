@@ -185,3 +185,61 @@ h1, h2, h3, h4 {
     background: rgb(245, 254, 245);
 }
 
+.appointments-container {
+    width: 80vw;
+}
+
+.dashboard-container {
+    width: 85%;
+}
+
+.provider-search-container {
+    background-color: rgb(203, 177, 232);
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.provider-results-container {
+    width: 80vw;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 8%;
+    border-radius: 10px;
+}
+
+.provider-container {
+    justify-content: center;
+    margin-top: 7%;
+    width: 80vw;
+}
+
+.appointments-jumbotron {
+    width: 80vw;
+    justify-content: center;
+    margin-left: 9vw;
+    border-radius: 10px;
+}
+
+.home-carousel {
+    min-width: 100%;
+}
+
+.userLogo {
+    background-color: rgb(231, 241, 233);
+    border-radius: 50%;
+}
+
+.navbar-brand:hover {
+    transition: .5s ease-in-out;
+    background-color: rgb(231, 241, 233);
+}
+.navbar-dash:hover {
+    transition: .5s ease-in-out;
+    background-color: rgb(231, 241, 233);
+}
+.navbar-menu:hover {
+    transition: .5s ease-in-out;
+    background-color: rgb(231, 241, 233);
+}
+
