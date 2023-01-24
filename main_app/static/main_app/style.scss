@@ -1,55 +1,55 @@
-@import 'dashboard';
-@import 'home';
-@import 'config';
-@import 'profile';
+// @import 'dashboard';
+// @import 'home';
+// @import 'config';
+// @import 'profile';
 
-.navbar-brand {
-    @include transition-ease;
-    &:hover {
-        background-color: $primary-color-nav;
-    }
-}
+// .navbar-brand {
+//     @include transition-ease;
+//     &:hover {
+//         background-color: $primary-color-nav;
+//     }
+// }
 
-.navbar-dash {
-    @extend .navbar-brand;
-}
+// .navbar-dash {
+//     @extend .navbar-brand;
+// }
 
-.navbar-menu {
-    @extend .navbar-brand;
-}
+// .navbar-menu {
+//     @extend .navbar-brand;
+// }
 
-.appointments-container {
-    width: 80vw;
-}
+// .appointments-container {
+//     width: 80vw;
+// }
 
-.dashboard-container {
-    width: 85%;
-}
+// .dashboard-container {
+//     width: 85%;
+// }
 
-.provider-search-container {
-    background-color: $primary-color-provider;
-    margin: 0 auto;
-    text-align: center;
-    border-radius: 10px;
-}
+// .provider-search-container {
+//     background-color: $primary-color-provider;
+//     margin: 0 auto;
+//     text-align: center;
+//     border-radius: 10px;
+// }
 
-.provider-results-container {
-    width: 80vw;
-    justify-content: center;
-    margin-top: 5%;
-    margin-bottom: 8%;
-    border-radius: 10px;
-}
+// .provider-results-container {
+//     width: 80vw;
+//     justify-content: center;
+//     margin-top: 5%;
+//     margin-bottom: 8%;
+//     border-radius: 10px;
+// }
 
-.provider-container {
-    justify-content: center;
-    margin-top: 7%;
-    width: 80vw;
-}
+// .provider-container {
+//     justify-content: center;
+//     margin-top: 7%;
+//     width: 80vw;
+// }
 
-.appointments-jumbotron {
-    width: 80vw;
-    justify-content: center;
-    margin-left: 9vw;
-    border-radius: 10px;
-}
+// .appointments-jumbotron {
+//     width: 80vw;
+//     justify-content: center;
+//     margin-left: 9vw;
+//     border-radius: 10px;
+// }

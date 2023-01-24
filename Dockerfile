@@ -12,7 +12,7 @@ RUN poetry install --no-root
 COPY . .
 
 ENV DJANGO_SETTINGS_MODULE "poh.settings"
-ENV DJANGO_SECRET_KEY "this is a secret key for building purposes"
+ENV DJANGO_SECRET_KEY "secret key goes here"
 
 RUN poetry run python manage.py collectstatic --noinput
 
